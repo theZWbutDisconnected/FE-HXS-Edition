@@ -2,7 +2,7 @@
 <project>
 	<!-- _____________________________ Android Section ____________________________ -->
 
-	<define name="MOBILE_CONTROLS"/>
+	<define name="MOBILE_CONTROLS" if="mobile"/>
 
 	<assets path="assets/android"/>
 
