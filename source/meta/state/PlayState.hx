@@ -324,7 +324,9 @@ class PlayState extends MusicBeatState
 			strumHUD[i] = new FlxCamera();
 			strumHUD[i].bgColor.alpha = 0;
 
-			//strumHUD[i].cameras = [camHUD];
+			#if (flixel < 5.0.0)
+			strumHUD[i].cameras = [camHUD];
+			#end
 			allUIs.push(strumHUD[i]);
 			FlxG.cameras.add(strumHUD[i]);
 			// set this strumline's camera to the designated camera
