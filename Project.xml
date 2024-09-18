@@ -6,8 +6,6 @@
 
 	<assets path="assets/android"/>
 
-	<android target-sdk-version="29"/>
-
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="Friday Night Funkin' Forever Engine" file="Forever-Engine" packageName="com.yoshubs.foreverengine" package="com.yoshubs.foreverengine" main="Main" version="0.2.7.1" company="Yoshubs" />
