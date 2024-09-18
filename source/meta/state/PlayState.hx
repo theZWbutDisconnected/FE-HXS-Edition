@@ -324,7 +324,7 @@ class PlayState extends MusicBeatState
 			strumHUD[i] = new FlxCamera();
 			strumHUD[i].bgColor.alpha = 0;
 
-			#if (flixel < 5.0.0)
+			#if (flixel < "5.0.0")
 			strumHUD[i].cameras = [camHUD];
 			#end
 			allUIs.push(strumHUD[i]);
