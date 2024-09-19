@@ -238,6 +238,13 @@ class Init extends FlxState
 
 	override public function create():Void
 	{
+	    #if mobile
+		#if android
+		StorageUtil.requestPermissions();
+		#end
+		Sys.setCwd(StorageUtil.getStorageDirectory());
+		#end
+		
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
