@@ -21,5 +21,7 @@ import sys.io.*;
 import meta.CoolUtil;
 import Init;
 
+import flixel.FlxG;
+
 using StringTools;
 #end
