@@ -92,12 +92,12 @@ class StorageUtil
 	public static function requestPermissions():Void
 	{
 		if (AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU){
-		    var permissions:Array<String> = ['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO']
+		    var permissions:Array<String> = ['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO'];
 		    for (i in permissions)
 			    AndroidPermissions.requestPermission(i);
 		}
 		else {
-		    var permissions:Array<String> = ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']
+		    var permissions:Array<String> = ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'];
 		    for (i in permissions)
 			    AndroidPermissions.requestPermission(i);
 		}
