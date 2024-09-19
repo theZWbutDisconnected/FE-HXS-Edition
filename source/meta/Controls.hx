@@ -15,7 +15,6 @@ import flixel.input.keyboard.FlxKey;
 import flixel.ui.FlxButton;
 import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup;
-import android.MobileControls;
 #end
 
 enum abstract Action(String) to String from String

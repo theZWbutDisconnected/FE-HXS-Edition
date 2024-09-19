@@ -37,7 +37,6 @@ import openfl.display.GraphicsShader;
 import openfl.events.KeyboardEvent;
 import openfl.filters.ShaderFilter;
 import openfl.media.Sound;
-import android.*;
 
 using StringTools;
 

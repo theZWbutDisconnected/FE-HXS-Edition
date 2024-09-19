@@ -3,7 +3,6 @@ package;
 import flixel.FlxG;
 import flixel.system.FlxSound;
 import meta.data.*;
-import android.MobileSys;
 
 /**
 	This class is used as an extension to many other forever engine stuffs, please don't delete it as it is not only exclusively used in forever engine

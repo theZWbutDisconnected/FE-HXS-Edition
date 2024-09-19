@@ -11,7 +11,6 @@ import meta.data.Conductor.BPMChangeEvent;
 import meta.data.dependency.FNFUIState;
 #if MOBILE_CONTROLS
 import flixel.input.actions.FlxActionInput;
-import android.MobileControls;
 #end
 
 /* 

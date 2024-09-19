@@ -28,7 +28,6 @@ import meta.data.*;
 import meta.data.dependency.Discord;
 import meta.data.font.Alphabet;
 import meta.state.menus.*;
-import android.MobileSys;
 
 using StringTools;
 

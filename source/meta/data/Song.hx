@@ -3,7 +3,6 @@ package meta.data;
 import haxe.Json;
 import haxe.format.JsonParser;
 import meta.data.Section.SwagSection;
-import android.MobileSys;
 
 using StringTools;
 

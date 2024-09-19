@@ -45,7 +45,6 @@ import openfl.geom.Rectangle;
 import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.ByteArray;
-import android.*;
 
 using StringTools;
 

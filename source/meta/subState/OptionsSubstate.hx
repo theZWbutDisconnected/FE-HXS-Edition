@@ -10,7 +10,6 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import meta.MusicBeat.MusicBeatSubState;
 import meta.data.font.Alphabet;
-import android.*;
 
 using StringTools;
 

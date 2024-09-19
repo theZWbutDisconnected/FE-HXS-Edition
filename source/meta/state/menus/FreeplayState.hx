@@ -21,7 +21,6 @@ import meta.data.font.Alphabet;
 import openfl.media.Sound;
 import sys.thread.Mutex;
 import sys.thread.Thread;
-import android.MobileSys;
 
 using StringTools;
 

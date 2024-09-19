@@ -12,7 +12,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import meta.data.dependency.FNFSprite;
 import meta.data.font.Alphabet;
-import android.MobileSys;
 
 typedef PortraitDataDef =
 {

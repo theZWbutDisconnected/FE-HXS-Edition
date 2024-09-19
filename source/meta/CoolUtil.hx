@@ -1,7 +1,6 @@
 package meta;
 
 import meta.state.PlayState;
-import android.MobileSys;
 
 using StringTools;
 
