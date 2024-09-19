@@ -19,6 +19,7 @@ import sys.io.*;
 #end
 
 import meta.CoolUtil;
+import Init;
 
 using StringTools;
 #end
