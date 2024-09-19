@@ -12,4 +12,11 @@ import android.os.BatteryManager as AndroidBatteryManager;
 import android.backend.StorageUtil;
 #end
 
+#if sys
+import sys.*;
+import sys.io.*;
+#end
+
+import meta.CoolUtil;
+
 using StringTools;
