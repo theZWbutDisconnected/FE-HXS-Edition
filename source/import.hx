@@ -13,6 +13,7 @@ import android.os.BatteryManager as AndroidBatteryManager;
 import mobile.MobileSys;
 #if MOBILE_CONTROL
 import mobile.MobileControls;
+import mobile.MobileControls.VirtualPad;
 #end
 import mobile.MobileConfig;
 import mobile.MobileMenu;
