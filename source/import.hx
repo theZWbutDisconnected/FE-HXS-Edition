@@ -12,7 +12,7 @@ import android.os.BatteryManager as AndroidBatteryManager;
 
 import mobile.*;
 #if MOBILE_CONTROL
-import mobile.MobileControls;
+import mobile.MobileControls.VirtualPad;
 #end
 
 import mobile.backend.StorageUtil;
