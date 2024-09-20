@@ -116,7 +116,7 @@ class OptionsMenuState extends MusicBeatState
 			"system setting" => [
 			    [
 			        ['System Settings', null],
-			        [, null],
+			        ['', null],
 			        ['Storage Type', getFromOption],
 			    ]
 			]
