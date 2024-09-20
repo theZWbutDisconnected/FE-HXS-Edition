@@ -14,9 +14,7 @@ import meta.data.font.Alphabet;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.FlxSprite;
-import android.MobileControls;
 import meta.MusicBeat;
-import android.*;
 
 class MobileMenu extends MusicBeatSubState
 {

@@ -10,13 +10,10 @@ import android.os.Build.VERSION as AndroidVersion;
 import android.os.Build.VERSION_CODES as AndroidVersionCode;
 import android.os.BatteryManager as AndroidBatteryManager;
 
-import mobile.MobileSys;
+import mobile.*;
 #if MOBILE_CONTROL
 import mobile.MobileControls;
-import mobile.MobileControls.VirtualPad;
 #end
-import mobile.MobileConfig;
-import mobile.MobileMenu;
 
 import mobile.backend.StorageUtil;
 #end

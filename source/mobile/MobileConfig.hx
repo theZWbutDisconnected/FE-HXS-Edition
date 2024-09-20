@@ -2,8 +2,6 @@ package mobile;
 
 import flixel.util.FlxSave;
 import flixel.math.FlxPoint;
-import android.MobileControls;
-import android.*;
 
 class MobileConfig 
 {
