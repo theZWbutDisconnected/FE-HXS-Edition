@@ -73,7 +73,6 @@ class Init extends FlxState
 			'Whether to display information like your game state.',
 			NOT_FORCED
 		],
-		#if android
 		'Storage Type' => [
 			'UI',
 			Selector,
@@ -81,7 +80,6 @@ class Init extends FlxState
 			NOT_FORCED,
 			['EXTERNAL_DATA', 'EXTERNAL_OBB', 'EXTERNAL_MEDIA', 'EXTERNAL']
 		],
-	    #end
 		'Reduced Movements' => [
 			false,
 			Checkmark,

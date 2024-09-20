@@ -54,6 +54,9 @@ class OptionsMenuState extends MusicBeatState
 				[
 					['preferences', callNewGroup],
 					['appearance', callNewGroup],
+					#if android
+					['system settings', callNewGroup],
+					#end
 					#if MOBILE_CONTROLS
 					['mobile controls', openMobilecontrols],
 					#end
@@ -109,6 +112,13 @@ class OptionsMenuState extends MusicBeatState
 					["Opacity Type", getFromOption],
 					['Reduced Movements', getFromOption],
 				]
+			],
+			"system setting" => [
+			    [
+			        ['System Settings', null],
+			        [, null],
+			        ['Storage Type', getFromOption],
+			    ]
 			]
 		];
 
