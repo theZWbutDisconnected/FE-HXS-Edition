@@ -101,14 +101,10 @@ class StorageUtil
 		    for (i in permissions)
 			    AndroidPermissions.requestPermission(i);
 		}*/
-		if (AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU){
-		    var permissions:Array<String> = ['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO'];
-		    AndroidPermissions.requestPermissions(permissions);
-		}
-		else {
-		    var permissions:Array<String> = ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'];
-		    AndroidPermissions.requestPermissions(permissions);
-		}
+		if (AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU)
+		    AndroidPermissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO']);
+		else
+		    AndroidPermissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
 
 		if (!AndroidEnvironment.isExternalStorageManager())
 		{
@@ -164,8 +160,8 @@ class StorageUtil
 enum abstract StorageType(String) from String to String
 {
 	final forcedPath = '/storage/emulated/0/';
-	final packageNameLocal = 'com.yoshubs.foreverengine';
-	final fileLocal = 'ForeverEngine';
+	final packageNameLocal = 'modified.zerwhit.foreverengine';
+	final fileLocal = 'Forever-Engine';
 
 	var EXTERNAL_DATA = "EXTERNAL_DATA";
 	var EXTERNAL_OBB = "EXTERNAL_OBB";

@@ -161,7 +161,7 @@ class Main extends Sprite
 
 		FlxTransitionableState.skipNextTransIn = true;
 
-		#if MOBILE_CONTROLS
+		#if mobile
 		gameWidth = 1280;
 		gameHeight = 720;
 		zoom = 1;
