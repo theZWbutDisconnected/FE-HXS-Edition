@@ -8,7 +8,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin' Forever Engine" file="Forever-Engine" packageName="com.yoshubs.foreverengine" package="com.yoshubs.foreverengine" main="Main" version="0.2.7.1" company="Yoshubs" />
+	<app title="Friday Night Funkin' Forever Engine" file="Forever-Engine" packageName="modified.zerwhit.foreverengine" package="modified.zerwhit.foreverengine" main="Main" version="0.3.1" company="Yoshubs" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -52,8 +52,7 @@
 	<assets path="assets/songs"/>
 	<assets path="assets/music" preload="true"/>
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
-
-	<!--<assets path="mods" />-->
+	<assets path="mods" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -64,7 +63,10 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="DISCORD_RPC"/>
 	<haxelib name="polymod"/>
-        <haxelib name="extension-androidtools" if="android"/>
+	
+	<!--______________________________AndroidLibsDefines_________________________ -->
+	
+    <haxelib name="extension-androidtools" if="android"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
