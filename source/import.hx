@@ -11,8 +11,8 @@ import android.os.Build.VERSION_CODES as AndroidVersionCode;
 import android.os.BatteryManager as AndroidBatteryManager;
 
 import mobile.*;
-#if MOBILE_CONTROL
-import mobile.MobileControls.VirtualPad;
+#if MOBILE_CONTROLS
+import mobile.MobileControls;
 #end
 
 import mobile.backend.StorageUtil;
