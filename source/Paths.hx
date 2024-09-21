@@ -242,7 +242,9 @@ class Paths
 	
 	#if mobile
 	inline static public function mobilePath(key:String = '') {
-	    return Sys.getCwd() + key;
+	    var path:String = Sys.getCwd() + key
+		CoolUtil.showPopUp(path, "Path to asset");
+	    return path;
 	}
 	#end
 	

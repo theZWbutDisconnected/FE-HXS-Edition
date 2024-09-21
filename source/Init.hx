@@ -258,7 +258,7 @@ class Init extends FlxState
 		//StorageUtil.requestPermissions();
 		#end
 		Sys.setCwd(StorageUtil.getStorageDirectory());
-		CoolUtil.showPopUp(Sys.getCwd(), "test");
+		CoolUtil.showPopUp(Sys.getCwd(), "System CWD");
 		#end
 
 		#if !html5
