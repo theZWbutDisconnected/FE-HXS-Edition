@@ -126,7 +126,7 @@ class CoolUtil
      	   			cut = '/';
      	   		folder = key + cut + folder;
      	  	 	externalAssetsTemp.push(folder);
-				//CoolUtil.showPopUp(folder, "test");
+				CoolUtil.showPopUp(folder, "test");
 				forEachAssets(folder);
 			}
 		}
