@@ -84,6 +84,9 @@ class OptionsMenuState extends MusicBeatState
 					['FPS Counter', getFromOption],
 					['Memory Counter', getFromOption],
 					#if !neko ['Debug Info', getFromOption], #end
+			        ['System Settings', null],
+			        ['', null],
+			        ['Storage Type', getFromOption]
 				]
 			],
 			'appearance' => [
@@ -112,13 +115,6 @@ class OptionsMenuState extends MusicBeatState
 					["Opacity Type", getFromOption],
 					['Reduced Movements', getFromOption],
 				]
-			],
-			"system setting" => [
-			    [
-			        ['System Settings', null],
-			        ['', null],
-			        ['Storage Type', getFromOption],
-			    ]
 			]
 		];
 
