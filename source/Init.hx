@@ -74,9 +74,9 @@ class Init extends FlxState
 			NOT_FORCED
 		],
 		'Storage Type' => [
-			'UI',
+			'EXTERNAL',
 			Selector,
-			'Choose whether the filter will be behind the notes or the UI',
+			'Choose your custom data directory.',
 			NOT_FORCED,
 			['EXTERNAL_DATA', 'EXTERNAL_OBB', 'EXTERNAL_MEDIA', 'EXTERNAL']
 		],
@@ -243,13 +243,6 @@ class Init extends FlxState
 
 	override public function create():Void
 	{
-	    #if mobile
-		#if android
-		//StorageUtil.requestPermissions();
-		#end
-		Sys.setCwd(StorageUtil.getStorageDirectory());
-		#end
-		
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
@@ -259,6 +252,13 @@ class Init extends FlxState
 
 		loadSettings();
 		loadControls();
+		
+	    #if mobile
+		#if android
+		//StorageUtil.requestPermissions();
+		#end
+		Sys.setCwd(StorageUtil.getStorageDirectory());
+		#end
 
 		#if !html5
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));
