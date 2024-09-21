@@ -121,7 +121,7 @@ class StorageUtil
 			CoolUtil.showPopUp('If you accepted the permissions you are all good!' + '\nIf you didn\'t then expect a crash' + '\nPress OK to see what happens',
 				'Notice!');*/
 
-		try
+		/*try
 		{
 			if (!FileSystem.exists(StorageUtil.getStorageDirectory()))
 				createDirectories(StorageUtil.getStorageDirectory());
@@ -130,7 +130,7 @@ class StorageUtil
 		{
 			CoolUtil.showPopUp('Please create directory to\n' + StorageUtil.getStorageDirectory(true) + '\nPress OK to close the game', 'Error!');
 			LimeSystem.exit(1);
-		}
+		}*/
 		}
 		catch (err:Dynamic)
 		{
