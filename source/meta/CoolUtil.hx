@@ -106,7 +106,7 @@ class CoolUtil
 	}
 	
 	static var externalAssetsTemp:Array<String> = [];
-	inline static public function getExternalAssets():Array<String>
+	static public function getExternalAssets():Array<String>
 	{
 		#if (sys && MODS_ALLOWED)
 		forEachAssets(Paths.mods());
@@ -117,8 +117,10 @@ class CoolUtil
 		return assetPaths;
 	}
 	
-	inline static public function forEachAssets(key:String = '') {
+	static public function forEachAssets(key:String = '') {
+		CoolUtil.showPopUp(key, "for");
 		if (FileSystem.exists(key)) {
+			CoolUtil.showPopUp(true, "exists");
 			for (folder in FileSystem.readDirectory(key))
 			{
 				var cut:String = '';

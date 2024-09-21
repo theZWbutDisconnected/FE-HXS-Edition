@@ -246,10 +246,8 @@ class Paths
 		var returnPath:String = 'assets/$file';
 		if (!MobileSys.exists(returnPath))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
-		#if sys
-		#if MOD_ALLOWED
+		#if (sys && MOD_ALLOWED)
 			returnPath = mobilePath(returnPath);
-		#end
 		#end
 		return returnPath;
 	}
