@@ -244,11 +244,11 @@ class Paths
 	inline static function getPreloadPath(file:String)
 	{
 		var returnPath:String = 'assets/$file';
-		#if sys
-		#if MOD_ALLOWED
-		returnPath = mobilePath(returnPath);
 		if (!MobileSys.exists(returnPath))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
+		#if sys
+		#if MOD_ALLOWED
+			returnPath = mobilePath(returnPath);
 		#end
 		#end
 		return returnPath;

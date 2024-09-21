@@ -114,6 +114,7 @@ class CoolUtil
 		#end
 	    var assetPaths = externalAssetsTemp;
 		externalAssetsTemp = [];
+		CoolUtil.showPopUp(Std.toString(externalAssetsTemp), "test");
 		return assetPaths;
 	}
 	
