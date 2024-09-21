@@ -54,9 +54,6 @@ class OptionsMenuState extends MusicBeatState
 				[
 					['preferences', callNewGroup],
 					['appearance', callNewGroup],
-					#if android
-					['system settings', callNewGroup],
-					#end
 					#if MOBILE_CONTROLS
 					['mobile controls', openMobilecontrols],
 					#end
@@ -84,9 +81,11 @@ class OptionsMenuState extends MusicBeatState
 					['FPS Counter', getFromOption],
 					['Memory Counter', getFromOption],
 					#if !neko ['Debug Info', getFromOption], #end
+					#if android
 			        ['System Settings', null],
 			        ['', null],
-			        ['Storage Type', getFromOption]
+			        ['Storage Type', getFromOption],
+			        #end
 				]
 			],
 			'appearance' => [
