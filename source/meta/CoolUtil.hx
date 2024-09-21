@@ -125,9 +125,9 @@ class CoolUtil
     	        if (!key.endsWith('/'))
      	   			cut = '/';
      	   		folder = key + cut + folder;
-     	  	 	externalAssetsTemp.push(path);
+     	  	 	externalAssetsTemp.push(folder);
 				//CoolUtil.showPopUp(folder, "test");
-				forEachAssets(path);
+				forEachAssets(folder);
 			}
 		}
 	}
