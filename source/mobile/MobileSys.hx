@@ -94,6 +94,12 @@ class MobileSys
 
     public static function getContent(path:String):String
     {
-        return Assets.getText(path);
+    	var daList:String = "";
+		#if (sys && MODS_ALLOWED)
+		if(FileSystem.exists(path)) daList = File.getContent(path);
+		#else
+		if(Assets.exists(path)) daList = Assets.getText(path);
+		#end
+		return daList;
     }
 }
