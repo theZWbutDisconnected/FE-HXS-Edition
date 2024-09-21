@@ -27,6 +27,7 @@ import meta.CoolUtil;
 import Init;
 
 import flixel.FlxG;
+import flixel.system.FlxAssets;
 
 using StringTools;
 #end
