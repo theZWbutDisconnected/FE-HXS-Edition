@@ -106,7 +106,7 @@ class CoolUtil
 	}
 	
 	var externalAssetsTemp:Array = [];
-	inline static public function getExternalAssets():Array
+	inline static public function getExternalAssets():Array<String>
 	{
 		#if (sys && MODS_ALLOWED)
 		var modsFolder:String = Paths.mods();
