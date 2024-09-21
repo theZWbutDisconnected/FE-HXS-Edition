@@ -104,4 +104,30 @@ class CoolUtil
 		FlxG.stage.window.alert(message, title);
 		#end
 	}
+	
+	var externalAssetsTemp:Array = [];
+	inline static public function getExternalAssets():Array
+	{
+		#if (sys && MODS_ALLOWED)
+		var modsFolder:String = Paths.mods();
+		forEachAssets(modsFolder);
+		#end
+	    var assetPaths = externalAssetsTemp;
+		externalAssetsTemp = [];
+		return assetPaths;
+	}
+	
+	inline static public function forEachAssets(key:String = '') {
+		if (FileSystem.exists(key)) {
+			for (folder in FileSystem.readDirectory(key))
+			{
+				var cut:String = '';
+    	        if (!key.endsWith('/'))
+     	   		cut = '/';
+     	  	 	var path = folder.replace(key + cut, '');
+     	  	 	externalAssets.push(path);
+				forEachAssets(path);
+			}
+		}
+	}
 }

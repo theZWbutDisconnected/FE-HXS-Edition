@@ -247,7 +247,7 @@ class Paths
 		#if sys
 		#if MOD_ALLOWED
 		returnPath = mobilePath(returnPath);
-		if (!MobileSys.mobileExists(returnPath))
+		if (!MobileSys.exists(returnPath))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 		#end
 		#end

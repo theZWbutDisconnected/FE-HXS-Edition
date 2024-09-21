@@ -43,7 +43,7 @@ class MobileSys
         var baseDirectory:Array<String> = [];
         var finalDirectory:Array<String> = [];
 
-        for (trim in Assets.list())
+        for (trim in #if MODS_ALLOWED Assets.list() #else CoolUtil.getExternalAssets())
         {
             if (trim.contains(path))
             {
@@ -82,15 +82,11 @@ class MobileSys
 
     public static function exists(path:String):Bool
 	{
+		#if (sys && MODS_ALLOWED)
+		return FileSystem.exists(Sys.getCwd() + path);
+		#end
 		return Assets.exists(path);
 	}
-
-    #if sys
-    public static function mobileExists(path:String):Bool
-	{
-		return FileSystem.exists(Sys.getCwd() + path);
-	}
-	#end
 
     public static function getContent(path:String):String
     {
