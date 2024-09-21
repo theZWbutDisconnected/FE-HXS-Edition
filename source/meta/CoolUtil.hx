@@ -109,12 +109,11 @@ class CoolUtil
 	inline static public function getExternalAssets():Array<String>
 	{
 		#if (sys && MODS_ALLOWED)
-		var modsFolder:String = Paths.mods();
-		forEachAssets(modsFolder);
+		forEachAssets(Paths.mods());
 		#end
 	    var assetPaths = externalAssetsTemp;
 		externalAssetsTemp = [];
-		CoolUtil.showPopUp(Std.string(externalAssetsTemp), "test");
+		CoolUtil.showPopUp(Std.string(assetPaths), "test");
 		return assetPaths;
 	}
 	
@@ -124,9 +123,10 @@ class CoolUtil
 			{
 				var cut:String = '';
     	        if (!key.endsWith('/'))
-     	   		cut = '/';
-     	  	 	var path = folder.replace(key + cut, '');
+     	   			cut = '/';
+     	   		folder = key + cut + folder;
      	  	 	externalAssetsTemp.push(path);
+				CoolUtil.showPopUp(folder, "test");
 				forEachAssets(path);
 			}
 		}
