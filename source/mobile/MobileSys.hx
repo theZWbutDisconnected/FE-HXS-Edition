@@ -85,6 +85,13 @@ class MobileSys
 		return Assets.exists(path);
 	}
 
+    #if sys
+    public static function mobileExists(path:String):Bool
+	{
+		return FileSystem.exists(Sys.getCwd() + path);
+	}
+	#end
+
     public static function getContent(path:String):String
     {
         return Assets.getText(path);

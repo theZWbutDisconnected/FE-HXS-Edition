@@ -52,7 +52,9 @@
 	<assets path="assets/songs"/>
 	<assets path="assets/music" preload="true"/>
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
-	<assets path="mods" />
+    
+    <define name="MODS_ALLOWED" />
+	<assets path="mods" if="MODS_ALLOWED" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 

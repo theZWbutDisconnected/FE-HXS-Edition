@@ -220,7 +220,11 @@ class Paths
 
 	inline static function getLibraryPathForce(file:String, library:String)
 	{
-		return '$library/$file';
+	    var path:String = '$library/$file';
+	    #if mobile
+	    path = mobilePath(path);
+	    #end
+		return path;
 	}
 
 	inline static function getPreloadPath(file:String)
@@ -228,8 +232,30 @@ class Paths
 		var returnPath:String = 'assets/$file';
 		if (!MobileSys.exists(returnPath))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
+		#if sys
+		#if mobile
+		if (MobileSys.mobileExists(returnPath))
+		    returnPath = mobilePath(returnPath);
+		#end
+		#end
 		return returnPath;
 	}
+	
+	#if mobile
+	inline static public function mobilePath(key:String = '') {
+	    return Sys.getCwd() + key;
+	}
+	#end
+	
+	#if MODS_ALLOWED
+	inline static public function mods(key:String = '') {
+	    var path:String = 'mods/' + key;
+	    #if mobile
+	    path = mobilePath(path);
+	    #end
+	    return path;
+	}
+	#end
 
 	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)
 	{
