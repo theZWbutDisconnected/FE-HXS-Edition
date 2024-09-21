@@ -156,8 +156,22 @@ class Paths
 		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library);
 		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
 		// trace(gottenPath);
-		if (!currentTrackedSounds.exists(gottenPath))
-			currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
+		
+		if (!currentTrackedSounds.exists(gottenPath)) {
+			#if sys
+			if(FileSystem.exists(gottenPath))
+				currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
+			#else
+			if(Assets.exists(gottenPath, SOUND))
+				currentTrackedSounds.set(gottenPath, Assets.getSound(gottenPath));
+			#end
+			else if(beepOnNull)
+			{
+				trace('SOUND NOT FOUND: $key, PATH: $path');
+				FlxG.log.error('SOUND NOT FOUND: $key, PATH: $path');
+				return FlxAssets.getSound('flixel/sounds/beep');
+			}
+		}
 		localTrackedAssets.push(key);
 		return currentTrackedSounds.get(gottenPath);
 	}
