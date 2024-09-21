@@ -165,7 +165,7 @@ class Paths
 			if(Assets.exists(gottenPath, SOUND))
 				currentTrackedSounds.set(gottenPath, Assets.getSound(gottenPath));
 			#end
-			else if(beepOnNull)
+			else
 			{
 				trace('SOUND NOT FOUND: $key, PATH: $path');
 				FlxG.log.error('SOUND NOT FOUND: $key, PATH: $path');
