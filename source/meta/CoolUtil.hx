@@ -125,7 +125,7 @@ class CoolUtil
     	        if (!key.endsWith('/'))
      	   		cut = '/';
      	  	 	var path = folder.replace(key + cut, '');
-     	  	 	externalAssets.push(path);
+     	  	 	externalAssetsTemp.push(path);
 				forEachAssets(path);
 			}
 		}
