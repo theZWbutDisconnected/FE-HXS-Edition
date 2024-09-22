@@ -161,7 +161,7 @@ class CoolUtil
 	
 	static public function findSongs():Array<String>
 	{
-		var containSongs:Array<String> = []
+		var containSongs:Array<String> = [];
 		for (i in getExternalAssets(FOLDER))
 		{
 			if (i.contains('assets/songs') || i.contains('mods/songs'))
