@@ -108,43 +108,29 @@ class CoolUtil
 	static var externalAssetsTemp:Array<String> = [];
 	static public function getExternalAssets(type:AssetType = FILE):Array<String>
 	{
-		#if MODS_ALLOWED
-		var mainDirectory:String = Paths.mobilePath();
-		switch (type) {
-			case FILE:
-				forEachAssets(mainDirectory);
-			case FOLDER:
-				forEachFolders(mainDirectory);
-		}
+		var mainDirectory:String = '/';
+		#if (MODS_ALLOWED && mobile)
+		mainDirectory = Paths.mobilePath();
 		#end
+		forEachDirectory(mainDirectory, type);
 	    var assetPaths = externalAssetsTemp;
 		externalAssetsTemp = [];
+		CoolUtil.showPopUp(Std.string(assetsPath), 'Getting External Assets');
 		return assetPaths;
 	}
 	
-	static public function forEachAssets(key:String = '') {
+	static public function forEachDirectory(key:String = '', type:AssetType) {
 		#if sys
 		if (FileSystem.exists(key)) {
 			for (file in FileSystem.readDirectory(key))
 			{
-				if (file.contains('.')) {
+				if (file.contains('.') && type == FILE) {
      	   			file = pathFormat(key, file);
      	  		 	externalAssetsTemp.push(file);
-				}
-			}
-		}
-		#end
-	}
-	
-	static public function forEachFolders(key:String = '') {
-		#if sys
-		if (FileSystem.exists(key)) {
-			for (folder in FileSystem.readDirectory(key))
-			{
-				if (!folder.contains('.')) {
-     	   			folder = pathFormat(key, folder);
-					forEachAssets(folder);
-     	  	 		externalAssetsTemp.push(folder);
+				} else if (file.contains('.') && type == FOLDER) {
+     	   			file = pathFormat(key, file);
+					forEachDirectory(file, type);
+     	  	 		externalAssetsTemp.push(file);
 				}
 			}
 		}
