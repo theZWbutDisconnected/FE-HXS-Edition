@@ -94,13 +94,14 @@ class StorageUtil
 	    try {
 		if (AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU){
 		    var permissions:Array<String> = ['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO'];
-		    for (i in permissions)
-			    AndroidPermissions.requestPermission(i);
+			AndroidPermissions.requestPermission(permissions[0]);
+			AndroidPermissions.requestPermission(permissions[1]);
+			AndroidPermissions.requestPermission(permissions[2]);
 		}
 		else {
 		    var permissions:Array<String> = ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'];
-		    for (i in permissions)
-			    AndroidPermissions.requestPermission(i);
+		    AndroidPermissions.requestPermission(permissions[0]);
+			AndroidPermissions.requestPermission(permissions[1]);
 		}
 		/*if (AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU)
 		    AndroidPermissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO']);

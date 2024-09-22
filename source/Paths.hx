@@ -235,7 +235,7 @@ class Paths
 	inline static function getLibraryPathForce(file:String, library:String)
 	{
 	    var path:String = '$library/$file';
-	    #if MOD_ALLOWED
+	    #if mobile
 	    path = mobilePath(path);
 	    #end
 		return path;
@@ -246,8 +246,14 @@ class Paths
 		var returnPath:String = 'assets/$file';
 		if (!MobileSys.exists(returnPath))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
-		#if (sys && MOD_ALLOWED)
-			returnPath = mobilePath(returnPath);
+		#if MOD_ALLOWED
+		if (!MobileSys.exists(returnPath))
+			returnPath = 'mods/$file';
+		if (!MobileSys.exists(returnPath))
+			returnPath = CoolUtil.swapSpaceDash(returnPath);
+		#if mobile
+		returnPath = mobilePath(returnPath);
+		#end
 		#end
 		return returnPath;
 	}
