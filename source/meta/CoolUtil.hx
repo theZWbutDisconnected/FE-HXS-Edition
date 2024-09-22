@@ -115,7 +115,7 @@ class CoolUtil
 		forEachDirectory(mainDirectory, type);
 	    var assetPaths = externalAssetsTemp;
 		externalAssetsTemp = [];
-		CoolUtil.showPopUp(Std.string(assetsPath), 'Getting External Assets');
+		CoolUtil.showPopUp(Std.string(assetPaths), 'Getting External Assets');
 		return assetPaths;
 	}
 	
