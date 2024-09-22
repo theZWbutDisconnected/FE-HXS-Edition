@@ -120,10 +120,12 @@ class CoolUtil
 	}
 	
 	static public function forEachDirectory(key:String = '', type:AssetType) {
-		#if sys
+		#if sys;
+		CoolUtil.showPopUp(key, 'Parent Directory');
 		if (FileSystem.exists(key)) {
 			for (file in FileSystem.readDirectory(key))
-			{
+			{;
+				CoolUtil.showPopUp(file, 'Child Asset');
 				if (file.contains('.') && type == FILE) {
      	   			file = pathFormat(key, file);
      	  		 	externalAssetsTemp.push(file);
@@ -132,6 +134,7 @@ class CoolUtil
 					forEachDirectory(file, type);
      	  	 		externalAssetsTemp.push(file);
 				}
+				CoolUtil.showPopUp(file, 'Child Asset[Formated]');
 			}
 		}
 		#end
