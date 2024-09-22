@@ -120,7 +120,7 @@ class CoolUtil
 	static public function forEachAssets(key:String = '') {
 		CoolUtil.showPopUp(key, "for");
 		if (FileSystem.exists(key)) {
-			CoolUtil.showPopUp(true, "exists");
+			CoolUtil.showPopUp("true", "exists");
 			for (folder in FileSystem.readDirectory(key))
 			{
 				var cut:String = '';
