@@ -115,7 +115,7 @@ class CoolUtil
 		forEachDirectory(mainDirectory, type);
 	    var assetPaths = externalAssetsTemp;
 		externalAssetsTemp = [];
-		CoolUtil.showPopUp(Std.string(assetPaths), 'Getting External Assets');
+		//CoolUtil.showPopUp(Std.string(assetPaths), 'Getting External Assets');
 		return assetPaths;
 	}
 	
@@ -153,7 +153,8 @@ class CoolUtil
 		var containSongs:Array<String> = [];
 		for (i in getExternalAssets(FOLDER))
 		{
-			if (i.contains('assets/songs') || i.contains('mods/songs'))
+			if (i.contains('assets/songs/') || i.contains('mods/songs/'))
+				CoolUtil.showPopUp(i, 'Valid Song Directory');
 				containSongs.push(i);
 		}
 		return containSongs;
