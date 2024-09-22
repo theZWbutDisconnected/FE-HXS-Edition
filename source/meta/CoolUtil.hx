@@ -129,7 +129,7 @@ class CoolUtil
 				if (file.contains('.') && type == FILE) {
      	   			file = pathFormat(key, file);
      	  		 	externalAssetsTemp.push(file);
-				} else if (file.contains('.') && type == FOLDER) {
+				} else if (!file.contains('.') && type == FOLDER) {
      	   			file = pathFormat(key, file);
 					forEachDirectory(file, type);
      	  	 		externalAssetsTemp.push(file);
