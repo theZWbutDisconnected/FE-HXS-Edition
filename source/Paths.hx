@@ -254,7 +254,7 @@ class Paths
 	
 	#if mobile
 	inline static public function mobilePath(key:String = '') {
-	    var path:String = Sys.getCwd() + key;
+	    var path:String = CoolUtil.pathFormat(Sys.getCwd(), key);
 		//CoolUtil.showPopUp(path, "Path to asset");
 	    return path;
 	}

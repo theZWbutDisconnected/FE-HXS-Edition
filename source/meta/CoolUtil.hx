@@ -153,9 +153,14 @@ class CoolUtil
 		var containSongs:Array<String> = [];
 		for (i in getExternalAssets(FOLDER))
 		{
-			if (i.contains('assets/songs/') || i.contains('mods/songs/'))
-				CoolUtil.showPopUp(i, 'Valid Song Directory');
-				containSongs.push(i);
+			var flag0:Bool = i.contains('mods/songs/')
+			if (i.contains('assets/songs/') || flag0)
+				var songFrom:String = 'assets/songs/';
+				if (flag0)
+					songFrom = 'mods/songs/';
+				var final:String = i.replace(Paths.mobilePath(songFrom));
+				CoolUtil.showPopUp(final, 'Valid Song Directory');
+				containSongs.push(final, '');
 		}
 		return containSongs;
 	}

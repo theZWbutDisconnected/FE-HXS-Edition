@@ -25,6 +25,7 @@ import sys.io.*;
 
 import meta.CoolUtil;
 import Init;
+import Paths;
 
 import flixel.FlxG;
 import flixel.system.FlxAssets;
