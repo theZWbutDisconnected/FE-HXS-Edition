@@ -140,7 +140,7 @@ class CoolUtil
 		#end
 	}
 	
-	static function pathFormat(path:String, key:String = '')
+	static public function pathFormat(path:String, key:String = '')
 	{
 		var cut:String = '';
     	if (!path.endsWith('/') && !key.startsWith('/'))
