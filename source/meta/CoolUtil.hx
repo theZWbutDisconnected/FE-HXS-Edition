@@ -158,9 +158,9 @@ class CoolUtil
 				var songFrom:String = 'assets/songs/';
 				if (flag0)
 					songFrom = 'mods/songs/';
-				var final:String = i.replace(Paths.mobilePath(songFrom));
-				CoolUtil.showPopUp(final, 'Valid Song Directory');
-				containSongs.push(final, '');
+				var finalP:String = i.replace(Paths.mobilePath(songFrom));
+				CoolUtil.showPopUp(finalP, 'Valid Song Directory');
+				containSongs.push(finalP, '');
 		}
 		return containSongs;
 	}
