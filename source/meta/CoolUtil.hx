@@ -106,35 +106,73 @@ class CoolUtil
 	}
 	
 	static var externalAssetsTemp:Array<String> = [];
-	static public function getExternalAssets():Array<String>
+	static public function getExternalAssets(type:AssetType = FILE):Array<String>
 	{
-		#if (sys && MODS_ALLOWED)
-		forEachAssets(Paths.mods());
+		#if MODS_ALLOWED
+		var mainDirectory:String = Paths.mobilePath();
+		switch (type) {
+			case FILE:
+				forEachAssets(mainDirectory);
+			case FOLDER:
+				forEachFolders(mainDirectory);
+		}
 		#end
 	    var assetPaths = externalAssetsTemp;
 		externalAssetsTemp = [];
-		CoolUtil.showPopUp(Std.string(assetPaths), "test");
 		return assetPaths;
 	}
 	
 	static public function forEachAssets(key:String = '') {
-		CoolUtil.showPopUp(key, "for");
+		#if sys
 		if (FileSystem.exists(key)) {
-			CoolUtil.showPopUp("true", "exists");
-			for (folder in FileSystem.readDirectory(key))
+			for (file in FileSystem.readDirectory(key))
 			{
-				var cut:String = '';
-    	        if (!key.endsWith('/'))
-     	   			cut = '/';
-				if (!folder.contains('.')) {
-     	   			folder = key + cut + folder;
-					forEachAssets(folder);
-				} else {
-     	   			folder = key + cut + folder;
+				if (file.contains('.')) {
+     	   			file = pathFormat(key, file);
+     	  		 	externalAssetsTemp.push(file);
 				}
-     	  	 	externalAssetsTemp.push(folder);
-				CoolUtil.showPopUp(folder, "test");
 			}
 		}
+		#end
 	}
+	
+	static public function forEachFolders(key:String = '') {
+		#if sys
+		if (FileSystem.exists(key)) {
+			for (folder in FileSystem.readDirectory(key))
+			{
+				if (!folder.contains('.')) {
+     	   			folder = pathFormat(key, folder);
+					forEachAssets(folder);
+     	  	 		externalAssetsTemp.push(folder);
+				}
+			}
+		}
+		#end
+	}
+	
+	static function pathFormat(path:String, key:String = '')
+	{
+		var cut:String = '';
+    	if (!path.endsWith('/') && !key.startWith('/'))
+     		cut = '/';
+     	return path + cut + key;
+	}
+	
+	static public function findSongs():Array<String>
+	{
+		var containSongs:Array<String> = []
+		for (i in getExternalAssets(FOLDER))
+		{
+			if (i.contains('assets/songs') || i.contains('mods/songs'))
+				containSongs.push(i);
+		}
+		return containSongs;
+	}
+}
+
+enum AssetType 
+{
+	FILE;
+	FOLDER;
 }
