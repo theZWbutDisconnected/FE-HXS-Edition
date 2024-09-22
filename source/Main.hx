@@ -103,14 +103,6 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
-		
-		#if mobile
-		#if android
-		StorageUtil.requestPermissions();
-		#end
-		Sys.setCwd(StorageUtil.getStorageDirectory());
-		CoolUtil.showPopUp(Sys.getCwd(), "System CWD");
-		#end
 
 		/**
 			ok so, haxe html5 CANNOT do 120 fps. it just cannot.
