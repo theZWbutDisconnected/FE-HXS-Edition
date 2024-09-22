@@ -153,7 +153,7 @@ class CoolUtil
 		var containSongs:Array<String> = [];
 		for (i in getExternalAssets(FOLDER))
 		{
-			var flag0:Bool = i.contains('mods/songs/')
+			var flag0:Bool = i.contains('mods/songs/');
 			if (i.contains('assets/songs/') || flag0)
 				var songFrom:String = 'assets/songs/';
 				if (flag0)
