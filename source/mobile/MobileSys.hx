@@ -43,7 +43,7 @@ class MobileSys
         var baseDirectory:Array<String> = [];
         var finalDirectory:Array<String> = [];
 
-        for (trim in #if MODS_ALLOWED CoolUtil.getExternalAssets() #else Assets.list() #end)
+        for (trim in Assets.list())
         {
             if (trim.contains(path))
             {
