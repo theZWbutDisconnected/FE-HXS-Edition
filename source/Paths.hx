@@ -247,10 +247,11 @@ class Paths
 		if (!MobileSys.exists(returnPath))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 		#if MOD_ALLOWED
-		if (!MobileSys.exists(returnPath))
+		if (!MobileSys.exists(returnPath, false)) {
 			returnPath = 'mods/$file';
-		if (!MobileSys.exists(returnPath))
-			returnPath = CoolUtil.swapSpaceDash(returnPath);
+			if (!MobileSys.exists(returnPath, false))
+				returnPath = CoolUtil.swapSpaceDash(returnPath);
+		}
 		#if mobile
 		returnPath = mobilePath(returnPath);
 		#end
