@@ -127,9 +127,11 @@ class CoolUtil
     	        if (!key.endsWith('/'))
      	   			cut = '/';
 				if (!folder.contains('.')) {
+     	   			folder = key + cut + folder;
 					forEachAssets(folder);
+				} else {
+     	   			folder = key + cut + folder;
 				}
-     	   		folder = key + cut + folder;
      	  	 	externalAssetsTemp.push(folder);
 				CoolUtil.showPopUp(folder, "test");
 			}
