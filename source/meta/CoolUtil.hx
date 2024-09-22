@@ -123,13 +123,13 @@ class CoolUtil
 			CoolUtil.showPopUp("true", "exists");
 			for (folder in FileSystem.readDirectory(key))
 			{
+				var cut:String = '';
+    	        if (!key.endsWith('/'))
+     	   			cut = '/';
+     	   		folder = key + cut + folder;
+     	  	 	externalAssetsTemp.push(folder);
+				CoolUtil.showPopUp(folder, "test");
 				if (!folder.contains('.')) {
-					var cut:String = '';
-    	        	if (!key.endsWith('/'))
-     	   				cut = '/';
-     	   			folder = key + cut + folder;
-     	  	 		externalAssetsTemp.push(folder);
-					CoolUtil.showPopUp(folder, "test");
 					forEachAssets(folder);
 				}
 			}
