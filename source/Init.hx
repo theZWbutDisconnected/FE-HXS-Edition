@@ -252,14 +252,6 @@ class Init extends FlxState
 
 		loadSettings();
 		loadControls();
-		
-	    #if mobile
-		#if android
-		StorageUtil.requestPermissions();
-		#end
-		Sys.setCwd(StorageUtil.getStorageDirectory());
-		CoolUtil.showPopUp(Sys.getCwd(), "System CWD");
-		#end
 
 		#if !html5
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));
