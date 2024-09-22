@@ -120,7 +120,7 @@ class CoolUtil
 	}
 	
 	static public function forEachDirectory(key:String = '', type:AssetType) {
-		#if sys;
+		#if sys
 		//CoolUtil.showPopUp(key, 'Parent Directory');
 		if (FileSystem.exists(key)) {
 			for (file in FileSystem.readDirectory(key))
