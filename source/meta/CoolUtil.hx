@@ -124,7 +124,7 @@ class CoolUtil
 		CoolUtil.showPopUp(key, 'Parent Directory');
 		if (FileSystem.exists(key)) {
 			for (file in FileSystem.readDirectory(key))
-			{;
+			{
 				CoolUtil.showPopUp(file, 'Child Asset');
 				if (file.contains('.') && type == FILE) {
      	   			file = pathFormat(key, file);
