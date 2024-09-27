@@ -246,12 +246,17 @@ class Paths
 		var returnPath:String = 'assets/$file';
 		if (!MobileSys.exists(returnPath, false))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
+		CoolUtil.showPopUp(returnPath, "trace");
 		#if MOD_ALLOWED
 		if (!MobileSys.exists(returnPath, false)) {
+			CoolUtil.showPopUp("assets not found, with mods", "error");
 			returnPath = 'mods/$file';
 			if (!MobileSys.exists(returnPath))
 				returnPath = CoolUtil.swapSpaceDash(returnPath);
+			CoolUtil.showPopUp(returnPath, "trace");
 		}
+		if (!MobileSys.exists(returnPath))
+			CoolUtil.showPopUp("mods not found, return failded path", "error");
 		#if mobile
 		returnPath = mobilePath(returnPath);
 		#end

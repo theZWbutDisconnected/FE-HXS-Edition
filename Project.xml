@@ -49,12 +49,12 @@
 
 	<source path="source" />
 	<assets path="assets" />
-	<!--assets path="assets/songs" /-->
+	<assets path="assets/songs" />
 	<assets path="assets/music" preload="true"/>
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
     
     <define name="MODS_ALLOWED" />
-	<assets path="mods" if="MODS_ALLOWED" />
+	<assets path="mods" if="MODS_ALLOWED" embed="false"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
