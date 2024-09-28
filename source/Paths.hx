@@ -244,12 +244,12 @@ class Paths
 	inline static function getPreloadPath(file:String)
 	{
 		var returnPath:String = 'assets/$file';
-		if (!MobileSys.exists(returnPath, false))
+		if (!MobileSys.exists(returnPath))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 		if (returnPath.contains('songs'))
 			CoolUtil.showPopUp(returnPath, "trace");
 		#if MOD_ALLOWED
-		if (!MobileSys.exists(returnPath, false)) {
+		if (!MobileSys.exists(returnPath)) {
 			if (returnPath.contains('songs'))
 				CoolUtil.showPopUp("assets not found, with mods", "error");
 			returnPath = 'mods/$file';

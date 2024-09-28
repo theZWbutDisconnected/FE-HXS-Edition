@@ -80,14 +80,12 @@ class MobileSys
         return finalDirectory;
     }
 
-    public static function exists(path:String, modEnabled:Bool = true):Bool
+    public static function exists(path:String):Bool
 	{
-		#if (sys && MODS_ALLOWED)
-		if (modEnabled) {
-			var existsF = FileSystem.exists(Paths.mobilePath(path));
-			if (existsF)
-				return true;
-		}
+		#if (sys && mobile)
+		var existsF = FileSystem.exists(Paths.mobilePath(path));
+		if (existsF)
+			return true;
 		#end
 		return Assets.exists(path);
 	}
