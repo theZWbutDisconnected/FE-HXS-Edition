@@ -243,7 +243,7 @@ class Paths
 
 	inline static function getPreloadPath(file:String)
 	{
-		var returnPath:String = 'assets/$file';
+		var returnPath:String = mobilePath('assets/$file');
 		if (!MobileSys.exists(returnPath))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 		if (returnPath.contains('songs'))
@@ -252,7 +252,7 @@ class Paths
 		if (!MobileSys.exists(returnPath)) {
 			if (returnPath.contains('songs'))
 				CoolUtil.showPopUp("assets not found, with mods", "error");
-			returnPath = 'mods/$file';
+			returnPath = mods('$file');
 			if (!MobileSys.exists(returnPath))
 				returnPath = CoolUtil.swapSpaceDash(returnPath);
 			CoolUtil.showPopUp(returnPath, "trace");
@@ -260,9 +260,6 @@ class Paths
 		if (!MobileSys.exists(returnPath))
 			if (returnPath.contains('songs'))
 				CoolUtil.showPopUp("mods not found, return failded path", "error");
-		#end
-		#if mobile
-		returnPath = mobilePath(returnPath);
 		#end
 		return returnPath;
 	}
