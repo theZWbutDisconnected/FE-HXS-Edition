@@ -123,7 +123,7 @@ class Paths
 		{
 			if (!currentTrackedAssets.exists(key))
 			{
-				var bitmap;
+				var bitmap = null;
 				#if MODS_ALLOWED
 				if (FileSystem.exists(path))
 					bitmap = BitmapData.fromFile(path);
