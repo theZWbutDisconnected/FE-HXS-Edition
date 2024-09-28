@@ -261,7 +261,7 @@ class Paths
 				returnPath = CoolUtil.swapSpaceDash(returnPath);
 				finalPath = mobilePath(returnPath);
 			}
-			CoolUtil.showPopUp(returnPath, "trace");
+			CoolUtil.showPopUp(finalPath, "trace");
 		}
 		if (!MobileSys.exists(finalPath))
 			if (returnPath.contains('songs'))
