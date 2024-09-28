@@ -248,7 +248,7 @@ class Paths
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 		if (returnPath.contains('songs'))
 			CoolUtil.showPopUp(returnPath, "trace");
-		#if MOD_ALLOWED
+		#if MODS_ALLOWED
 		if (!MobileSys.exists(returnPath)) {
 			if (returnPath.contains('songs'))
 				CoolUtil.showPopUp("assets not found, with mods", "error");
