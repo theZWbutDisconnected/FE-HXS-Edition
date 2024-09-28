@@ -129,9 +129,6 @@ class Paths
 					bitmap = BitmapData.fromFile(path);
 				else #end if (OpenFlAssets.exists(path, IMAGE))
 					bitmap = OpenFlAssets.getBitmapData(path);
-				#if mobile
-				bitmap = BitmapData.fromFile(path);
-				#end
 				var newGraphic:FlxGraphic;
 				if (textureCompression)
 				{
