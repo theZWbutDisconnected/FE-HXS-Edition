@@ -127,8 +127,8 @@ class Paths
 				#if MODS_ALLOWED
 				if (FileSystem.exists(path))
 					bitmap = BitmapData.fromFile(path);
-				else #end if (Assets.exists(path, IMAGE))
-					bitmap = Assets.getBitmapData(path);
+				else #end if (OpenFlAssets.exists(path, IMAGE))
+					bitmap = OpenFlAssets.getBitmapData(path);
 				var newGraphic:FlxGraphic;
 				if (textureCompression)
 				{
