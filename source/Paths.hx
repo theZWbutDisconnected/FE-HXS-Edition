@@ -124,11 +124,12 @@ class Paths
 			if (!currentTrackedAssets.exists(key))
 			{
 				var bitmap = null;
-				#if (MODS_ALLOWED && sys && !mobile)
-				if (FileSystem.exists(path))
-					bitmap = BitmapData.fromFile(path);
-				else #end if (OpenFlAssets.exists(path, IMAGE))
-					bitmap = OpenFlAssets.getBitmapData(path);
+				#if (MODS_ALLOWED && sys)
+				var realPath = path.startsWith('/') ? path : '/$path';
+				var file:File = File.applicationStorageDirectory.resolvePath(realPath);
+				var byteArray:ByteArray = file.read();
+            	bitmapData = BitmapData.fromBytes(byteArray);
+				#end
 				var newGraphic:FlxGraphic;
 				if (textureCompression)
 				{
