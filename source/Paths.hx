@@ -249,12 +249,10 @@ class Paths
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 			finalPath = mobilePath(returnPath);
 		}
-		if (returnPath.contains('songs'))
-			CoolUtil.showPopUp(finalPath, "trace");
+		CoolUtil.showPopUp(finalPath, "trace");
 		#if MODS_ALLOWED
 		if (!MobileSys.exists(finalPath)) {
-			if (returnPath.contains('songs'))
-				CoolUtil.showPopUp("assets not found, with mods", "error");
+			CoolUtil.showPopUp("assets not found, with mods", "error");
 			returnPath = 'mods/$file';
 			finalPath = mobilePath(returnPath);
 			if (!MobileSys.exists(finalPath)) {
@@ -264,8 +262,7 @@ class Paths
 			CoolUtil.showPopUp(finalPath, "trace");
 		}
 		if (!MobileSys.exists(finalPath))
-			if (returnPath.contains('songs'))
-				CoolUtil.showPopUp("mods not found, return failded path", "error");
+			CoolUtil.showPopUp("mods not found, return failded path", "error");
 		#end
 		return finalPath;
 	}
