@@ -123,7 +123,12 @@ class Paths
 		{
 			if (!currentTrackedAssets.exists(key))
 			{
-				var bitmap = BitmapData.fromFile(path);
+				var bitmap;
+				#if MODS_ALLOWED
+				if (FileSystem.exists(path))
+					bitmap = BitmapData.fromFile(path);
+				else #end if (Assets.exists(path, IMAGE))
+					bitmap = Assets.getBitmapData(path);
 				var newGraphic:FlxGraphic;
 				if (textureCompression)
 				{
