@@ -260,9 +260,9 @@ class Paths
 		if (!MobileSys.exists(returnPath))
 			if (returnPath.contains('songs'))
 				CoolUtil.showPopUp("mods not found, return failded path", "error");
+		#end
 		#if mobile
 		returnPath = mobilePath(returnPath);
-		#end
 		#end
 		return returnPath;
 	}
