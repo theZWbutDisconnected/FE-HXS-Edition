@@ -124,7 +124,7 @@ class Paths
 			if (!currentTrackedAssets.exists(key))
 			{
 				var bitmap = null;
-				#if MODS_ALLOWED
+				#if (MODS_ALLOWED && sys)
 				if (FileSystem.exists(path))
 					bitmap = BitmapData.fromFile(path);
 				else #end if (OpenFlAssets.exists(path, IMAGE))
