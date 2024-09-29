@@ -254,7 +254,6 @@ class Paths
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 			finalPath = mobilePath(returnPath);
 		}
-		CoolUtil.showPopUp(finalPath, "trace");
 		#if MODS_ALLOWED
 		if (!MobileSys.exists(returnPath)) {
 			CoolUtil.showPopUp("assets not found, with mods", "error");
@@ -264,7 +263,6 @@ class Paths
 				returnPath = CoolUtil.swapSpaceDash(returnPath);
 				finalPath = mobilePath(returnPath);
 			}
-			CoolUtil.showPopUp(finalPath, "trace");
 		}
 		if (!MobileSys.exists(returnPath))
 			CoolUtil.showPopUp("mods not found, return failded path", "error");
