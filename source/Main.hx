@@ -133,7 +133,8 @@ class Main extends Sprite
 
 			errMsg += '\nUncaught Error: ' + e.error;
 
-			Lib.application.window.alert(errMsg, 'Crash!');
+			CoolUtil.showPopUp(errMsg, "Crash!");
+			//Lib.application.window.alert(errMsg, 'Crash!');
 			System.exit(1);
 		});
 
