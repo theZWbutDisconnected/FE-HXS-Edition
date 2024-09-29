@@ -303,7 +303,7 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'Shoutouts Tom Fulp';
 			// credTextShit.screenCenter();
 			case 9:
-				createCoolText([curWacky[0]]);
+				createCoolText(/*[*/curWacky[0]/*]*/);
 			// credTextShit.visible = true;
 			case 11:
 				addMoreText(curWacky[1]);
