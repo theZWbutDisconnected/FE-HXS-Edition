@@ -119,7 +119,7 @@ class Paths
 	public static function returnGraphic(key:String, ?library:String, ?textureCompression:Bool = false)
 	{
 		var path = getPath('images/$key.png', IMAGE, library);
-		// if (MobileSys.exists(path)) 你妈逼害老子爆了一个星期没修好气死你爹我了都怪你都怪你都怪你都怪你都怪你都怪你
+		// if (MobileSys.exists('images/$key.png'))
 		{
 			if (!currentTrackedAssets.exists(key))
 			{
@@ -254,9 +254,10 @@ class Paths
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 			finalPath = mobilePath(returnPath);
 		}
+
 		#if MODS_ALLOWED
 		if (!MobileSys.exists(returnPath)) {
-			CoolUtil.showPopUp("assets not found, with mods", "error");
+			CoolUtil.showPopUp("assets:" + finalPath + " not found, with mods", "error");
 			returnPath = 'mods/$file';
 			finalPath = mobilePath(returnPath);
 			if (!MobileSys.exists(returnPath)) {
