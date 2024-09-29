@@ -119,7 +119,7 @@ class Paths
 	public static function returnGraphic(key:String, ?library:String, ?textureCompression:Bool = false)
 	{
 		var path = getPath('images/$key.png', IMAGE, library);
-		// if (MobileSys.exists(path)) 你妈逼害老子爆了一个星期没修好气死你爹我了
+		// if (MobileSys.exists(path)) 你妈逼害老子爆了一个星期没修好气死你爹我了都怪你都怪你都怪你都怪你都怪你都怪你
 		{
 			if (!currentTrackedAssets.exists(key))
 			{
