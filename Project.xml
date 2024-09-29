@@ -48,8 +48,8 @@
 	-->
 
 	<source path="source" />
-	<assets path="assets" preload="true"/>
-	<assets path="assets/songs" preload="true"/>
+	<assets path="assets" />
+	<assets path="assets/songs" />
 	<assets path="assets/music" preload="true"/>
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
     
