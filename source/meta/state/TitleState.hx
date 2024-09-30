@@ -233,33 +233,37 @@ class TitleState extends MusicBeatState
 	{
 		for (i in 0...textArray.length)
 		{
-			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
-			money.screenCenter(X);
-			money.y += (i * 60) + 200;
-			credGroup.add(money);
-			textGroup.add(money);
+			try {
+				var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
+				money.screenCenter(X);
+				money.y += (i * 60) + 200;
+				credGroup.add(money);
+				textGroup.add(money);
+			} catch (e) {
+				trace(e);
+			}
 		}
 	}
 
 	function addMoreText(text:String)
 	{
-		var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
-		coolText.screenCenter(X);
-		coolText.y += (textGroup.length * 60) + 200;
-		credGroup.add(coolText);
-		textGroup.add(coolText);
+		try {
+			var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
+			coolText.screenCenter(X);
+			coolText.y += (textGroup.length * 60) + 200;
+			credGroup.add(coolText);
+			textGroup.add(coolText);
+		} catch (e) {
+			trace(e);
+		}
 	}
 
 	function deleteCoolText()
 	{
 		while (textGroup.members.length > 0)
 		{
-			try {
-				credGroup.remove(textGroup.members[0], true);
-				textGroup.remove(textGroup.members[0], true);
-			} catch (e) {
-				trace(e);
-			}
+			credGroup.remove(textGroup.members[0], true);
+			textGroup.remove(textGroup.members[0], true);
 		}
 	}
 
