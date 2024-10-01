@@ -82,14 +82,21 @@ class MobileSys
 
     public static function exists(path:String):Bool
 	{
-		#if (sys && mobile)
+		#if (sys && mobile && MODS_ALLOWED)
 		var existsF = FileSystem.exists(Paths.mobilePath(CoolUtil.pathFormat('assets/', path)));
 		if (!existsF)
 			existsF = FileSystem.exists(Paths.mods(path));
 		if (existsF)
 			return true;
 		#end
-		return Assets.exists(path);
+        #if desktop
+        var existsF = FileSystem.exists(CoolUtil.pathFormat('assets/', path));
+        if (!existsF)
+            existsF = FileSystem.exists(Paths.mods(path));
+        if (existsF)
+            return true;
+        #end
+		return #if desktop FileSystem.exists(path) #else Assets.exists(path) #end;
 	}
 
     public static function getContent(path:String):String

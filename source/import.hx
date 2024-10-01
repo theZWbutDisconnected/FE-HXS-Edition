@@ -18,6 +18,8 @@ import mobile.MobileControls;
 import mobile.backend.StorageUtil;
 #end
 
+import mobile.MobileSys;
+
 #if sys
 import sys.*;
 import sys.io.*;

@@ -1,6 +1,7 @@
 package meta;
 
 import meta.state.PlayState;
+import mobile.MobileSys;
 
 using StringTools;
 
@@ -108,7 +109,7 @@ class CoolUtil
 	static var externalAssetsTemp:Array<String> = [];
 	static public function getExternalAssets(type:AssetType = FILE):Array<String>
 	{
-		var mainDirectory:String = '/';
+		var mainDirectory:String = '.';
 		#if (MODS_ALLOWED && mobile)
 		mainDirectory = Paths.mobilePath();
 		#end
@@ -121,11 +122,11 @@ class CoolUtil
 	
 	static public function forEachDirectory(key:String = '', type:AssetType) {
 		#if sys
-		//CoolUtil.showPopUp(key, 'Parent Directory');
+		// CoolUtil.showPopUp(key, 'Parent Directory');
 		if (FileSystem.exists(key)) {
 			for (file in FileSystem.readDirectory(key))
 			{
-				//CoolUtil.showPopUp(file, 'Child Asset');
+				// CoolUtil.showPopUp(file, 'Child Asset');
 				if (file.contains('.') && type == FILE) {
      	   			file = pathFormat(key, file);
      	  		 	externalAssetsTemp.push(file);
@@ -134,7 +135,7 @@ class CoolUtil
 					forEachDirectory(file, type);
      	  	 		externalAssetsTemp.push(file);
 				}
-				//CoolUtil.showPopUp(file, 'Child Asset[Formated]');
+				// CoolUtil.showPopUp(file, 'Child Asset[Formated]');
 			}
 		}
 		#end
@@ -159,7 +160,7 @@ class CoolUtil
 				if (flag0)
 					songFrom = 'mods/songs/';
 				var finalP:String = i.replace(Paths.mobilePath(songFrom), '');
-				//CoolUtil.showPopUp(finalP, 'Valid Song Directory');
+				CoolUtil.showPopUp(finalP, 'Valid Song Directory');
 				containSongs.push(finalP);
 			}
 		}

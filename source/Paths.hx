@@ -270,14 +270,15 @@ class Paths
 		#end
 		return finalPath;
 	}
-	
-	#if mobile
+
 	inline static public function mobilePath(key:String = '') {
-	    var path:String = CoolUtil.pathFormat(Sys.getCwd(), key);
+		var path:String = key;
+		#if mobile
+	    path = CoolUtil.pathFormat(Sys.getCwd(), key);
 		//CoolUtil.showPopUp(path, "Path to asset");
+		#end
 	    return path;
 	}
-	#end
 	
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '') {

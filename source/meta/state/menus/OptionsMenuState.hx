@@ -574,6 +574,7 @@ class OptionsMenuState extends MusicBeatState
 
 	public function openMobilecontrols()
 	{
+		#if mobile
 		if (controls.ACCEPT)
 		{
 			FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -583,6 +584,7 @@ class OptionsMenuState extends MusicBeatState
 				FlxG.switchState(new MobileMenu());
 			});
 		}
+		#end
 	}
 
 	public function openControlmenu()
