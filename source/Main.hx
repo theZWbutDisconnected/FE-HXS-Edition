@@ -23,6 +23,8 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.events.UncaughtErrorEvent;
 import flash.system.System;
+import sys.FileSystem;
+import sys.io.File;
 
 // Here we actually import the states and metadata, and just the metadata.
 // It's nice to have modularity so that we don't have ALL elements loaded at the same time.
@@ -111,32 +113,7 @@ class Main extends Sprite
 			note studders and shit its weird.
 		**/
 
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, function(e:UncaughtErrorEvent)
-		{
-			var errMsg:String = "";
-			var callStack:Array<StackItem> = CallStack.exceptionStack(true);
-			var dateNow:String = Date.now().toString();
-
-			dateNow = StringTools.replace(dateNow, " ", "_");
-			dateNow = StringTools.replace(dateNow, ":", "'");
-
-			for (stackItem in callStack)
-			{
-				switch (stackItem)
-				{
-					case FilePos(s, file, line, column):
-						errMsg += file + " (line " + line + ")\n";
-					default:
-						errMsg += stackItem;
-				}
-			}
-
-			errMsg += '\nUncaught Error: ' + e.error;
-
-			CoolUtil.showPopUp(errMsg, "Crash!");
-			// Lib.application.window.alert(errMsg, 'Crash!');
-			System.exit(1);
-		});
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 
 		#if (html5 || neko)
 		framerate = 60;
@@ -230,5 +207,52 @@ class Main extends Sprite
 			FlxG.drawFramerate = newFramerate;
 			FlxG.updateFramerate = newFramerate;
 		}
+	}
+
+	function onCrash(e:UncaughtErrorEvent):Void
+	{
+		var errMsg:String = "";
+		var path:String;
+		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+		var dateNow:String = Date.now().toString();
+
+		dateNow = StringTools.replace(dateNow, " ", "_");
+		dateNow = StringTools.replace(dateNow, ":", "'");
+
+		path = 'crash/FE_$dateNow.txt';
+
+		for (stackItem in callStack)
+		{
+			switch (stackItem)
+			{
+				case FilePos(s, file, line, column):
+					errMsg += file + " (line " + line + ")\n";
+				default:
+					Sys.println(stackItem);
+			}
+		}
+
+		errMsg += "\nUncaught Error: " + e.error;
+		//errMsg += "\nPlease report this error to the GitHub page: https://github.com/CrowPlexus-FNF/Forever-Engine-Legacy";
+
+		if (!FileSystem.exists("crash/"))
+			FileSystem.createDirectory("crash/");
+
+		File.saveContent(path, errMsg + "\n");
+
+		Sys.println(errMsg);
+		Sys.println('Crash dump saved in ${Path.normalize(path)}');
+		Sys.println("Making a simple alert...");
+
+		#if windows
+		var crashDialoguePath:String = "FE-CrashDialog.exe";
+		if (FileSystem.exists(crashDialoguePath))
+			new Process(crashDialoguePath, [path]);
+		else
+			Application.current.window.alert(errMsg, "Error!");
+		#else
+		CoolUtil.showPopUp(errMsg, "Crash!");
+		#end
+		Sys.exit(1);
 	}
 }

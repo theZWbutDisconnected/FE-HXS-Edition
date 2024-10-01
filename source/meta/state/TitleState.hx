@@ -233,29 +233,21 @@ class TitleState extends MusicBeatState
 	{
 		for (i in 0...textArray.length)
 		{
-			try {
-				var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
-				money.screenCenter(X);
-				money.y += (i * 60) + 200;
-				credGroup.add(money);
-				textGroup.add(money);
-			} catch (e) {
-				trace(e);
-			}
+			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
+			money.screenCenter(X);
+			money.y += (i * 60) + 200;
+			credGroup.add(money);
+			textGroup.add(money);
 		}
 	}
 
 	function addMoreText(text:String)
 	{
-		try {
-			var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
-			coolText.screenCenter(X);
-			coolText.y += (textGroup.length * 60) + 200;
-			credGroup.add(coolText);
-			textGroup.add(coolText);
-		} catch (e) {
-			trace(e);
-		}
+		var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
+		coolText.screenCenter(X);
+		coolText.y += (textGroup.length * 60) + 200;
+		credGroup.add(coolText);
+		textGroup.add(coolText);
 	}
 
 	function deleteCoolText()
@@ -267,7 +259,7 @@ class TitleState extends MusicBeatState
 		}
 	}
 
-	override function beatHit()
+	public override function beatHit()
 	{
 		super.beatHit();
 
@@ -310,14 +302,14 @@ class TitleState extends MusicBeatState
 
 			// credTextShit.text = 'Shoutouts Tom Fulp';
 			// credTextShit.screenCenter();
-			case 9:
-				createCoolText([curWacky[0]]);
+//			case 9:
+//				createCoolText([curWacky[0]]);
 			// credTextShit.visible = true;
-			case 11:
-				addMoreText(curWacky[1]);
+//			case 11:
+//				addMoreText(curWacky[1]);
 			// credTextShit.text += '\nlmao';
-			case 12:
-				deleteCoolText();
+//			case 12:
+//				deleteCoolText();
 			// credTextShit.visible = false;
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
