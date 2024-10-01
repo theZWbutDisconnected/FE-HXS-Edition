@@ -2,6 +2,7 @@ package mobile;
 
 import flixel.FlxG;
 import openfl.utils.Assets;
+import sys.FileSystem;
 
 using StringTools;
 
@@ -83,9 +84,13 @@ class MobileSys
     public static function exists(path:String):Bool
 	{
 		#if (sys && mobile && MODS_ALLOWED)
-		var existsF = FileSystem.exists(Paths.mobilePath(CoolUtil.pathFormat('assets/', path)));
+        var localPath:String = path.replace(Paths.mobilePath(), '');
+        var finalPath:String = localPath;
+        if (!localPath.contains(Paths.mobilePath()))
+            finalPath = CoolUtil.pathFormat(Paths.mobilePath(), localPath);
+		var existsF = FileSystem.exists(finalPath);
 		if (!existsF)
-			existsF = FileSystem.exists(Paths.mods(path));
+			existsF = FileSystem.exists(CoolUtil.pathFormat(Paths.mods(), finalPath));
 		if (existsF)
 			return true;
 		#end

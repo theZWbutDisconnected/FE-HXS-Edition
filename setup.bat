@@ -1,19 +1,25 @@
 @echo off
 title FNF Setup - Start
-echo Make sure Haxe 4.1.5 and HaxeFlixel is installed (4.1.5 is important)!
+echo Make sure Haxe 4.3.6 and HaxeFlixel is installed (4.3.6 is important)!
 echo Press any key to install required libraries.
 pause >nul
 title FNF Setup - Installing libraries
 echo Installing haxelib libraries...
-haxelib install lime 7.8.0
-haxelib install openfl
-haxelib install flixel 4.8.1
-haxelib install flixel-addons
-haxelib install flixel-ui
-haxelib install hscript
-haxelib install newgrounds
+haxelib install hxcpp
+haxelib install lime 8.1.2 --quiet
+haxelib install openfl 9.3.3 --quiet
+haxelib install flixel 5.6.1 --quiet
+haxelib install flixel-ui 2.6.1 --quiet
+haxelib run lime setup flixel
 haxelib run lime setup
-haxelib install flixel-tools
+haxelib install flixel-tools 1.5.1 --quiet
+haxelib install flixel-addons 3.2.2 --quiet
+haxelib install hscript 2.4.0 --quiet
+haxelib install hxdiscord_rpc 1.1.1 --quiet
+haxelib install hxcpp-debug-server 1.2.4 --quiet
+haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
+haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc --quiet
+haxelib run lime setup
 title FNF Setup - User action required
 cls
 haxelib run flixel-tools setup
