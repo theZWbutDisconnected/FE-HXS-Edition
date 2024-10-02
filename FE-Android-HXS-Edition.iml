@@ -75,13 +75,24 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: polymod:1.8.0">
+      <library name="Haxelib: interpret:0.1.4">
         <CLASSES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/polymod/1,8,0" />
+          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/interpret/0,1,4" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/polymod/1,8,0" />
+          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/interpret/0,1,4" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: hscript:2.5.0">
+        <CLASSES>
+          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/hscript/2,5,0" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/hscript/2,5,0" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -93,50 +104,6 @@
         <JAVADOC />
         <SOURCES>
           <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/extension-androidtools/git" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: thx.semver:0.2.2">
-        <CLASSES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/thx,semver/0,2,2/src" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/thx,semver/0,2,2/src" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: jsonpath:1.0.0">
-        <CLASSES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/jsonpath/1,0,0" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/jsonpath/1,0,0" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: jsonpatch:1.0.0">
-        <CLASSES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/jsonpatch/1,0,0" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/jsonpatch/1,0,0" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: thx.core:0.44.0">
-        <CLASSES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/thx,core/0,44,0/src" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/thx,core/0,44,0/src" />
         </SOURCES>
       </library>
     </orderEntry>

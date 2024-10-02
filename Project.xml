@@ -58,7 +58,7 @@
 	<assets path="assets" />
 	<assets path="assets/songs" />
 	<assets path="assets/music" preload="true"/>
-	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
+	<assets path="FE-CrashDialog.exe" type="template" if="windows" />
 	<assets path="mods" if="MODS_ALLOWED" embed="false"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
@@ -70,7 +70,8 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="DISCORD_RPC"/>
-	<haxelib name="polymod"/>
+	<haxelib name="interpret" />
+	<haxelib name="hscript" />
 	
 	<!--______________________________AndroidLibsDefines_________________________ -->
 	
