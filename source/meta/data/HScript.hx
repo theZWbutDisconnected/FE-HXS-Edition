@@ -26,10 +26,10 @@ class HScript
 		env.addModule('meta.state.TitleState', DynamicModule.fromStatic(meta.state.TitleState));
 	}
 
-	function importClass(packag3:String) {
-		var resolvedClass:Expr = cast Type.resolveClass(packag3);
-		env.addModule(packag3, DynamicModule.fromStatic(resolvedClass));
-	}
+//	function importClass(packag3:String) {
+//		var resolvedClass:Expr = cast Type.resolveClass(packag3);
+//		env.addModule(packag3, DynamicModule.fromStatic(resolvedClass));
+//	}
 
 	public function loadModule(path:String) {
 		var pArr = path.split('/');
