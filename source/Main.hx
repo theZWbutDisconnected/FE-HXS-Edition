@@ -29,8 +29,6 @@ import openfl.events.MouseEvent;
 import flash.display.BitmapData;
 import flash.events.ErrorEvent;
 import meta.data.HScript;
-import interpret.Env;
-import interpret.DynamicModule;
 
 // Here we actually import the states and metadata, and just the metadata.
 // It's nice to have modularity so that we don't have ALL elements loaded at the same time.
@@ -156,20 +154,9 @@ class Main extends Sprite
 		gameCreate = new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash);
 		addChild(gameCreate); // and create it afterwards
 
-//		var script:HScript = new HScript();
-//		script.loadModule('scripts/Test');
-
-		// Create env
-		var env = new Env();
-		env.addDefaultModules();
-		env.addModule('haxe.Log', DynamicModule.fromStatic(haxe.Log));
-		env.addModule('StringTools', DynamicModule.fromStatic(StringTools));
-		env.addModule('runtime.meta.data.Test', DynamicModule.fromString(env, 'Test', MobileSys.getContent(Paths.script('scripts/Test'))));
-		env.link();
-		var testClass = env.modules.get('runtime.meta.data.Test').dynamicClasses.get('Test');
-		var testClassInstance = testClass.createInstance();
-		testClassInstance.call('main', ['Jeremy']);
-		testClassInstance.call('main');
+		var script:HScript = new HScript();
+		script.loadModule('scripts/Test');
+		script.callf(script.getClass('Test'), 'main');
 
 		// default game FPS settings, I'll probably comment over them later.
 		// addChild(new FPS(10, 3, 0xFFFFFF));
