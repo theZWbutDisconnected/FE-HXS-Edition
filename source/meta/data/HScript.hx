@@ -3,6 +3,7 @@ package meta.data;
 import interpret.Env;
 import interpret.DynamicModule;
 import interpret.DynamicInstance;
+import haxe.macro.Expr;
 
 using StringTools;
 
@@ -19,15 +20,15 @@ class HScript
 
 	public function new() {
 		env.addDefaultModules();
-		importClass('StringTools');
-		importClass('haxe.Log');
-		importClass('meta.state.PlayState');
-		importClass('meta.state.TitleState');
+		env.addModule('StringTools', DynamicModule.fromStatic(StringTools));
+		env.addModule('haxe.Log', DynamicModule.fromStatic(haxe.Log));
+		env.addModule('meta.state.PlayState', DynamicModule.fromStatic(meta.state.PlayState));
+		env.addModule('meta.state.TitleState', DynamicModule.fromStatic(meta.state.TitleState));
 	}
 
-	function importClass(packag3:String) {
-		var resolvedClass:Class<Dynamic> = Type.resolveClass(packag3);
-		macro env.addModule(packag3, DynamicModule.fromStatic(resolvedClass));
+	function importClass(packag3:String, ) {
+		var resolvedClass:Expr = cast Type.resolveClass(packag3);
+		env.addModule(packag3, DynamicModule.fromStatic(resolvedClass));
 	}
 
 	public function loadModule(path:String) {
