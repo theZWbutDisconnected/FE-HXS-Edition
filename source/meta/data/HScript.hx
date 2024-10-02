@@ -19,9 +19,15 @@ class HScript
 
 	public function new() {
 		env.addDefaultModules();
-		env.addModule('haxe.Log', DynamicModule.fromStatic(haxe.Log));
-		env.addModule('StringTools', DynamicModule.fromStatic(StringTools));
-		env.addModule('meta.state.PlayState', DynamicModule.fromStatic(meta.state.PlayState));
+		importClass('StringTools');
+		importClass('haxe.Log');
+		importClass('meta.state.PlayState');
+		importClass('meta.state.TitleState');
+	}
+
+	function importClass(packag3:String) {
+		var resolvedClass:Class<Dynamic> = Type.resolveClass(packag3);
+		macro env.addModule(packag3, DynamicModule.fromStatic(resolvedClass));
 	}
 
 	public function loadModule(path:String) {
