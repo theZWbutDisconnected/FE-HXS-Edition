@@ -3,6 +3,9 @@ package mobile.backend;
 import lime.system.System as LimeSystem;
 import haxe.io.Path;
 import haxe.Exception;
+import meta.CoolUtil;
+
+using StringTools;
 
 /**
  * A storage class for mobile.
@@ -102,7 +105,7 @@ class StorageUtil
 				AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
 			}
 				if ((AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU
-				&& !AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_MEDIA_IMAGES'))
+			&& !AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_MEDIA_IMAGES'))
 				|| (AndroidVersion.SDK_INT < AndroidVersionCode.TIRAMISU
 					&& !AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE')))
 				CoolUtil.showPopUp('If you accepted the permissions you are all good!' + '\nIf you didn\'t then expect a crash' + '\nPress OK to see what happens',

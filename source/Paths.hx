@@ -248,25 +248,25 @@ class Paths
 
 	inline static function getPreloadPath(file:String)
 	{
-		var returnPath:String = 'assets/$file';
-		var finalPath:String = mobilePath(returnPath);
-		if (!MobileSys.exists(returnPath)) {
+		var returnPath = 'assets/$file';
+		var finalPath = mobilePath(returnPath);
+		#if MODS_ALLOWED
+		returnPath = 'mods/$file';
+		finalPath = mobilePath(returnPath);
+		if (!MobileSys.exists(finalPath)) {
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 			finalPath = mobilePath(returnPath);
 		}
-
-		#if MODS_ALLOWED
-		if (!MobileSys.exists(returnPath)) {
-			CoolUtil.showPopUp("assets:" + finalPath + " not found, with mods", "error");
-			returnPath = 'mods/$file';
+		if (!MobileSys.exists(finalPath)) {
+			returnPath = 'assets/$file';
 			finalPath = mobilePath(returnPath);
-			if (!MobileSys.exists(returnPath)) {
+			#end
+			if (!MobileSys.exists(finalPath)) {
 				returnPath = CoolUtil.swapSpaceDash(returnPath);
 				finalPath = mobilePath(returnPath);
 			}
+		#if MODS_ALLOWED
 		}
-		if (!MobileSys.exists(returnPath))
-			CoolUtil.showPopUp("mods not found, return failded path", "error");
 		#end
 		return finalPath;
 	}
@@ -275,20 +275,20 @@ class Paths
 		var path:String = key;
 		#if mobile
 	    path = CoolUtil.pathFormat(Sys.getCwd(), key);
-		//CoolUtil.showPopUp(path, "Path to asset");
+		// CoolUtil.showPopUp(path, "Path to asset");
 		#end
 	    return path;
 	}
-	
-	#if MODS_ALLOWED
+
 	inline static public function mods(key:String = '') {
+		#if MODS_ALLOWED
 	    var path:String = 'mods/' + key;
 	    #if mobile
 	    path = mobilePath(path);
 	    #end
+		#end
 	    return path;
 	}
-	#end
 
 	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)
 	{

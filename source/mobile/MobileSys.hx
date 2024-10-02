@@ -89,8 +89,6 @@ class MobileSys
         if (!localPath.contains(Paths.mobilePath()))
             finalPath = CoolUtil.pathFormat(Paths.mobilePath(), localPath);
 		var existsF = FileSystem.exists(finalPath);
-		if (!existsF)
-			existsF = FileSystem.exists(CoolUtil.pathFormat(Paths.mods(), finalPath));
 		if (existsF)
 			return true;
 		#end

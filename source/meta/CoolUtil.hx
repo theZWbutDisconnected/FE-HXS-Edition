@@ -160,7 +160,7 @@ class CoolUtil
 				if (flag0)
 					songFrom = 'mods/songs/';
 				var finalP:String = i.replace(Paths.mobilePath(songFrom), '');
-				CoolUtil.showPopUp(finalP, 'Valid Song Directory');
+//				CoolUtil.showPopUp(finalP, 'Valid Song Directory');
 				containSongs.push(finalP);
 			}
 		}

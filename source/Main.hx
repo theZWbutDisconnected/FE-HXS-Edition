@@ -25,6 +25,8 @@ import openfl.events.UncaughtErrorEvent;
 import flash.system.System;
 import sys.FileSystem;
 import sys.io.File;
+import openfl.events.MouseEvent;
+import flash.display.BitmapData;
 
 // Here we actually import the states and metadata, and just the metadata.
 // It's nice to have modularity so that we don't have ALL elements loaded at the same time.
@@ -113,7 +115,7 @@ class Main extends Sprite
 			note studders and shit its weird.
 		**/
 
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+		Lib.current.loaderInfo.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 
 		#if (html5 || neko)
 		framerate = 60;
@@ -164,6 +166,23 @@ class Main extends Sprite
 
 		infoCounter = new Overlay(0, 0);
 		addChild(infoCounter);
+	}
+
+	private function onRightClick(m:MouseEvent)
+	{
+		//Intentional crash, pick your poison:
+
+		nullReference();
+		//invalidCast();
+		//stackOverflow(0);
+		//memoryLeak();
+		//infiniteLoop();
+	}
+
+	private function nullReference():Void
+	{
+		var b:BitmapData = null;
+		b.clone();
 	}
 
 	public static function framerateAdjust(input:Float)
@@ -219,7 +238,9 @@ class Main extends Sprite
 		dateNow = StringTools.replace(dateNow, " ", "_");
 		dateNow = StringTools.replace(dateNow, ":", "'");
 
-		path = 'crash/FE_$dateNow.txt';
+		var crashDir:String = CoolUtil.pathFormat(#if mobile Sys.getCwd() + #end '', 'crash/');
+
+		path = '${crashDir}FE_$dateNow.txt';
 
 		for (stackItem in callStack)
 		{
@@ -231,12 +252,11 @@ class Main extends Sprite
 					Sys.println(stackItem);
 			}
 		}
-
 		errMsg += "\nUncaught Error: " + e.error;
 		//errMsg += "\nPlease report this error to the GitHub page: https://github.com/CrowPlexus-FNF/Forever-Engine-Legacy";
 
-		if (!FileSystem.exists("crash/"))
-			FileSystem.createDirectory("crash/");
+		if (!FileSystem.exists(crashDir))
+			FileSystem.createDirectory(crashDir);
 
 		File.saveContent(path, errMsg + "\n");
 

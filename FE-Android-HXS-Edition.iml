@@ -68,6 +68,13 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: linc_discord-rpc:Unknown">
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
       <library name="Haxelib: polymod:1.8.0">
         <CLASSES>
           <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/polymod/1,8,0" />

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
+	<!-- _____________________________ Base Defined ____________________________ -->
+
+	<define name="MODS_ALLOWED" />
+
 	<!-- _____________________________ Android Section ____________________________ -->
 
 	<define name="MOBILE_CONTROLS" if="mobile"/>
@@ -10,7 +14,8 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin' Forever Engine" file="Forever-Engine" packageName="modified.zerwhit.foreverengine" package="modified.zerwhit.foreverengine" main="Main" version="0.3.1" company="Yoshubs" />
+	<meta packageName="modified.zerwhit.foreverengine" package="modified.zerwhit.foreverengine" version="0.3.1" company="com.zerwhit.modified" />
+	<app title="Friday Night Funkin': Forever Engine" main="Main" file="Forever-Engine" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -54,8 +59,6 @@
 	<assets path="assets/songs" />
 	<assets path="assets/music" preload="true"/>
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
-    
-    <define name="MODS_ALLOWED" />
 	<assets path="mods" if="MODS_ALLOWED" embed="false"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
@@ -91,8 +94,9 @@
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
 	<!-- Always enable Null Object Reference check for crash dialog -->
-	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
-	<haxedef name="HXCPP_STACK_LINE" if="release" />	
+	<haxedef name="HXCPP_CHECK_POINTER" />
+	<haxedef name="HXCPP_STACK_LINE" />
+	<haxedef name="HXCPP_STACK_TRACE" />
 	
 	<!--Macro fixes-->
 	<haxeflag name="--macro" value="allowPackage('flash')" />
