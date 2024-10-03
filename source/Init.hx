@@ -262,13 +262,6 @@ class Init extends FlxState
 		CoolUtil.showPopUp(Sys.getCwd(), "System CWD");
 		#end
 
-		var script:HScript = new HScript();
-		script.loadModule('scripts/Test');
-		var clazz = script.getClass('Test');
-		script.callf(clazz, 'main');
-		trace(script.get(clazz, 'test'));
-		trace(script.callf(clazz, 'returnMain'));
-
 		#if !html5
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));
 		#end
@@ -389,5 +382,14 @@ class Init extends FlxState
 
 		FlxG.game.setFilters(filters);
 		// */
+	}
+
+	function hxsUsingExample() {
+		var script:HScript = new HScript();
+		script.loadModule('scripts/Example');
+		var clazz = script.getClass('Example');
+		script.callf(clazz, 'main');
+		trace(script.get(clazz, 'test'));
+		trace(script.callf(clazz, 'returnMain'));
 	}
 }

@@ -18,6 +18,7 @@ import mobile.MobileControls;
 import mobile.backend.StorageUtil;
 #end
 
+import lime.app.Application;
 import mobile.MobileSys;
 
 #if sys

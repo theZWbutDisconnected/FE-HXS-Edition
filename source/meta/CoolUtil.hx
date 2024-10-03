@@ -127,9 +127,13 @@ class CoolUtil
 			for (file in FileSystem.readDirectory(key))
 			{
 				// CoolUtil.showPopUp(file, 'Child Asset');
-				if (file.contains('.') && type == FILE) {
-     	   			file = pathFormat(key, file);
-     	  		 	externalAssetsTemp.push(file);
+				if (type == FILE) {
+					if (!file.contains('.')) {
+						file = pathFormat(key, file);
+						forEachDirectory(file, type);
+					}
+					file = pathFormat(key, file);
+					externalAssetsTemp.push(file);
 				} else if (!file.contains('.') && type == FOLDER) {
      	   			file = pathFormat(key, file);
 					forEachDirectory(file, type);
@@ -160,11 +164,48 @@ class CoolUtil
 				if (flag0)
 					songFrom = 'mods/songs/';
 				var finalP:String = i.replace(Paths.mobilePath(songFrom), '');
+				#if desktop
+				finalP = finalP.replace('./', '');
+				#end
 //				CoolUtil.showPopUp(finalP, 'Valid Song Directory');
 				containSongs.push(finalP);
 			}
 		}
 		return containSongs;
+	}
+
+	static public function findScripts():Array<String>
+	{
+		var containScripts:Array<String> = [];
+		for (i in getExternalAssets(FILE))
+		{
+			var flag0:Bool = i.contains('mods/') && validScriptType(i);
+			if ((i.contains('assets/') && validScriptType(i)) || flag0) {
+				var scriptFrom:String = 'assets/';
+				if (flag0)
+					scriptFrom = 'mods/';
+				var finalP:String = i.replace(Paths.mobilePath(scriptFrom), '');
+				#if desktop
+				finalP = finalP.replace('./', '');
+				#end
+				finalP = finalP.split('.')[0];
+//				CoolUtil.showPopUp(finalP, 'Valid Song Directory');
+				containScripts.push(finalP);
+			}
+		}
+		return containScripts;
+	}
+
+	static public function validScriptType(n:String) {
+		return n.endsWith('.hx') || n.endsWith('.hxs') || n.endsWith('.hxc') || n.endsWith('.hscript');
+	}
+
+	static public function alert(msg:String, title:String) {
+		#if windows
+		Application.current.window.alert(msg, title);
+		#else
+		CoolUtil.showPopUp(msg, title);
+		#end
 	}
 }
 

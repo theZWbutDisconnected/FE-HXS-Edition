@@ -156,10 +156,18 @@ class PlayState extends MusicBeatState
 	var mControls:MobileControls;
 	#end
 
+	public static var scripts:Array<HScript> = [];
+
 	// at the beginning of the playstate
 	override public function create()
 	{
 		super.create();
+
+		for (i in CoolUtil.findScripts()) {
+			var script:HScript = new HScript();
+			script.loadModule(i);
+			scripts.push(script);
+		}
 
 		// reset any values and variables that are static
 		songScore = 0;
@@ -216,6 +224,8 @@ class PlayState extends MusicBeatState
 		displayRating('sick', 'early', true);
 		popUpCombo(true);
 		//
+
+		callFunction('SongRuntimeScript', 'onCreate');
 
 		stageBuild = new Stage(curStage);
 		add(stageBuild);
@@ -415,6 +425,8 @@ class PlayState extends MusicBeatState
 			var shader:GraphicsShader = new GraphicsShader("", File.getContent("./assets/shaders/vhs.frag"));
 			FlxG.camera.setFilters([new ShaderFilter(shader)]);
 		 */
+
+		callFunction('SongRuntimeScript', 'onCreatePost');
 	}
 
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey>
@@ -2002,5 +2014,15 @@ class PlayState extends MusicBeatState
 		if (Init.trueSettings.get('Disable Antialiasing') && Std.isOfType(Object, FlxSprite))
 			cast(Object, FlxSprite).antialiasing = false;
 		return super.add(Object);
+	}
+
+	function callFunction(className:String, name:String, ?args:Array<Dynamic>) {
+		for (i in scripts) {
+			if (i.hasClass(className)) {
+				var clazz = i.getClass(className);
+				if (clazz.exists(name))
+					i.callf(clazz, name, args);
+			}
+		}
 	}
 }

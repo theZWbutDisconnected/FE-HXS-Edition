@@ -87,9 +87,6 @@ class FreeplayState extends MusicBeatState
 
 		for (i in folderSongs)
 		{
-			#if desktop
-			i = i.replace('./', '');
-			#end
 			if (!existingSongs.contains(i.toLowerCase()))
 			{
 				var icon:String = 'gf';

@@ -82,5 +82,5 @@ void main()
     // ac beat
     col*=1.+clamp(noise(vec2(0.,uv.y+time*.2))*.6-.25,0.,.1);
     
-    gl_FragColor=vec4(col,1.);
+    gl_FragColor=vec4(col,texture(bitmap,uvn).a);
 }
