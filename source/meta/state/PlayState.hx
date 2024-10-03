@@ -46,6 +46,8 @@ import meta.data.dependency.Discord;
 
 class PlayState extends MusicBeatState
 {
+	public static var instance:PlayState;
+
 	public static var startTimer:FlxTimer;
 
 	public static var curStage:String = '';
@@ -156,12 +158,14 @@ class PlayState extends MusicBeatState
 	var mControls:MobileControls;
 	#end
 
-	public static var scripts:Array<HScript> = [];
+	public var scripts:Array<HScript> = [];
 
 	// at the beginning of the playstate
 	override public function create()
 	{
 		super.create();
+
+		instance = this;
 
 		for (i in CoolUtil.findScripts()) {
 			var script:HScript = new HScript();
@@ -493,7 +497,7 @@ class PlayState extends MusicBeatState
 
 						if (eligable)
 						{
-							goodNoteHit(coolNote, boyfriend, boyfriendStrums, firstNote); // then hit the note
+							goodNoteHit(coolNote, boyfriendStrums.singingCharacters, boyfriendStrums, firstNote); // then hit the note
 							pressedNotes.push(coolNote);
 						}
 						// end of this little check
@@ -502,7 +506,7 @@ class PlayState extends MusicBeatState
 				}
 				else // else just call bad notes
 					if (!Init.trueSettings.get('Ghost Tapping'))
-						missNoteCheck(true, key, boyfriend, true);
+						missNoteCheck(true, key, boyfriendStrums.singingCharacters, true);
 				Conductor.songPosition = previousTime;
 			}
 
@@ -893,7 +897,7 @@ class PlayState extends MusicBeatState
 						}
 					}
 					// hell breaks loose here, we're using nested scripts!
-					mainControls(daNote, strumline.character, strumline, strumline.autoplay);
+					mainControls(daNote, strumline.singingCharacters, strumline, strumline.autoplay);
 
 					// check where the note is and make sure it is either active or inactive
 					if (daNote.y > FlxG.height)
@@ -918,7 +922,7 @@ class PlayState extends MusicBeatState
 									note.tooLate = true;
 
 								vocals.volume = 0;
-								missNoteCheck((Init.trueSettings.get('Ghost Tapping')) ? true : false, daNote.noteData, boyfriend, true);
+								missNoteCheck((Init.trueSettings.get('Ghost Tapping')) ? true : false, daNote.noteData, boyfriendStrums.singingCharacters, true);
 								// ambiguous name
 								Timings.updateAccuracy(0);
 							}
@@ -938,7 +942,7 @@ class PlayState extends MusicBeatState
 										}
 										if (!breakFromLate)
 										{
-											missNoteCheck((Init.trueSettings.get('Ghost Tapping')) ? true : false, daNote.noteData, boyfriend, true);
+											missNoteCheck((Init.trueSettings.get('Ghost Tapping')) ? true : false, daNote.noteData, boyfriendStrums.singingCharacters, true);
 											for (note in parentNote.childrenNotes)
 												note.tooLate = true;
 										}
@@ -987,14 +991,15 @@ class PlayState extends MusicBeatState
 		daNote.destroy();
 	}
 
-	function goodNoteHit(coolNote:Note, character:Character, characterStrums:Strumline, ?canDisplayJudgement:Bool = true)
+	function goodNoteHit(coolNote:Note, characters:Array<Character>, characterStrums:Strumline, ?canDisplayJudgement:Bool = true)
 	{
 		if (!coolNote.wasGoodHit)
 		{
 			coolNote.wasGoodHit = true;
 			vocals.volume = 1;
 
-			characterPlayAnimation(coolNote, character);
+			for (character in characters)
+				characterPlayAnimation(coolNote, character);
 			if (characterStrums.receptors.members[coolNote.noteData] != null)
 				characterStrums.receptors.members[coolNote.noteData].playAnim('confirm', true);
 
@@ -1024,7 +1029,7 @@ class PlayState extends MusicBeatState
 
 				if (!coolNote.isSustainNote)
 				{
-					increaseCombo(foundRating, coolNote.noteData, character);
+					increaseCombo(foundRating, coolNote.noteData, characters);
 					popUpScore(foundRating, ratingTiming, characterStrums, coolNote);
 					if (coolNote.childrenNotes.length > 0)
 						Timings.notesHit++;
@@ -1047,14 +1052,15 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function missNoteCheck(?includeAnimation:Bool = false, direction:Int = 0, character:Character, popMiss:Bool = false, lockMiss:Bool = false)
+	function missNoteCheck(?includeAnimation:Bool = false, direction:Int = 0, characters:Array<Character>, popMiss:Bool = false, lockMiss:Bool = false)
 	{
 		if (includeAnimation)
 		{
 			var stringDirection:String = UIStaticArrow.getArrowFromNumber(direction);
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-			character.playAnim('sing' + stringDirection.toUpperCase() + 'miss', lockMiss);
+			for (character in characters)
+				character.playAnim('sing' + stringDirection.toUpperCase() + 'miss', lockMiss);
 		}
 		decreaseCombo(popMiss);
 
@@ -1114,7 +1120,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	private function mainControls(daNote:Note, char:Character, strumline:Strumline, autoplay:Bool):Void
+	private function mainControls(daNote:Note, chars:Array<Character>, strumline:Strumline, autoplay:Bool):Void
 	{
 		var notesPressedAutoplay = [];
 
@@ -1151,7 +1157,7 @@ class PlayState extends MusicBeatState
 					}
 					notesPressedAutoplay.push(daNote);
 				}
-				goodNoteHit(daNote, char, strumline, canDisplayJudgement);
+				goodNoteHit(daNote, chars, strumline, canDisplayJudgement);
 			}
 			//
 		}
@@ -1171,7 +1177,7 @@ class PlayState extends MusicBeatState
 						&& !coolNote.tooLate
 						&& coolNote.isSustainNote
 						&& holdControls[coolNote.noteData])
-						goodNoteHit(coolNote, char, strumline);
+						goodNoteHit(coolNote, chars, strumline);
 				});
 			}
 		}
@@ -1370,7 +1376,7 @@ class PlayState extends MusicBeatState
 		Timings.updateFCDisplay();
 	}
 
-	function increaseCombo(?baseRating:String, ?direction = 0, ?character:Character)
+	function increaseCombo(?baseRating:String, ?direction = 0, ?characters:Array<Character>)
 	{
 		// trolled this can actually decrease your combo if you get a bad/shit/miss
 		if (baseRating != null)
@@ -1382,7 +1388,7 @@ class PlayState extends MusicBeatState
 				combo += 1;
 			}
 			else
-				missNoteCheck(true, direction, character, false, true);
+				missNoteCheck(true, direction, characters, false, true);
 		}
 	}
 
@@ -1549,14 +1555,18 @@ class PlayState extends MusicBeatState
 			&& ((gf.animation.curAnim.name.startsWith("idle") || gf.animation.curAnim.name.startsWith("dance"))))
 			gf.dance();
 
-		if ((boyfriend.animation.curAnim.name.startsWith("idle") || boyfriend.animation.curAnim.name.startsWith("dance"))
+		for (boyfriend in boyfriendStrums.singingCharacters) {
+			if ((boyfriend.animation.curAnim.name.startsWith("idle") || boyfriend.animation.curAnim.name.startsWith("dance"))
 			&& (curBeat % 2 == 0 || boyfriend.characterData.quickDancer))
-			boyfriend.dance();
+				boyfriend.dance();
+		}
 
 		// added this for opponent cus it wasn't here before and skater would just freeze
-		if ((dadOpponent.animation.curAnim.name.startsWith("idle") || dadOpponent.animation.curAnim.name.startsWith("dance"))
-			&& (curBeat % 2 == 0 || dadOpponent.characterData.quickDancer))
-			dadOpponent.dance();
+		for (dadOpponent in strumLines.members[0].singingCharacters) {
+			if ((dadOpponent.animation.curAnim.name.startsWith("idle") || dadOpponent.animation.curAnim.name.startsWith("dance"))
+				&& (curBeat % 2 == 0 || dadOpponent.characterData.quickDancer))
+				dadOpponent.dance();
+		}
 	}
 
 	override function beatHit()

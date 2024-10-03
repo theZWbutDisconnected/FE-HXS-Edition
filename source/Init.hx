@@ -21,6 +21,7 @@ enum SettingTypes
 	Checkmark;
 	Selector;
 }
+// HSCRIPT NOT ALLOW ENUM BRO
 
 /**
 	This is the initialisation class. if you ever want to set anything before the game starts or call anything then this is probably your best bet.

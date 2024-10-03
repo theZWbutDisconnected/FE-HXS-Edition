@@ -47,7 +47,6 @@ class HScript
 		env.addModule('openfl.display.GraphicsShader', DynamicModule.fromStatic(openfl.display.GraphicsShader));
 		env.addModule('openfl.display.Shader', DynamicModule.fromStatic(openfl.display.Shader));
 		env.addModule('openfl.filters.ShaderFilter', DynamicModule.fromStatic(openfl.filters.ShaderFilter));
-		env.addModule('openfl.filters.ColorMatrixFilter', DynamicModule.fromStatic(openfl.filters.ColorMatrixFilter));
 		env.addModule('openfl.geom.Matrix', DynamicModule.fromStatic(openfl.geom.Matrix));
 		env.addModule('openfl.geom.Rectangle', DynamicModule.fromStatic(openfl.geom.Rectangle));
 		env.addModule('openfl.utils.Assets', DynamicModule.fromStatic(openfl.utils.Assets));
@@ -55,11 +54,11 @@ class HScript
 		env.addModule('sys.io.File', DynamicModule.fromStatic(sys.io.File));
 		env.addModule('Paths', DynamicModule.fromStatic(Paths));
 		env.addModule('Main', DynamicModule.fromStatic(Main));
-		env.addModule('Init', DynamicModule.fromStatic(Init));
+		// env.addModule('Init', DynamicModule.fromStatic(Init));
 		env.addModule('ForeverTools', DynamicModule.fromStatic(ForeverTools));
 		env.addModule('ForeverAssets', DynamicModule.fromStatic(ForeverAssets));
 		env.addModule('mobile.MobileConfig', DynamicModule.fromStatic(mobile.MobileConfig));
-		env.addModule('mobile.MobileControls', DynamicModule.fromStatic(mobile.MobileControls));
+		// env.addModule('mobile.MobileControls', DynamicModule.fromStatic(mobile.MobileControls));
 		env.addModule('mobile.MobileMenu', DynamicModule.fromStatic(mobile.MobileMenu));
 		env.addModule('mobile.MobileSys', DynamicModule.fromStatic(mobile.MobileSys));
 		env.addModule('mobile.backend.StorageUtil', DynamicModule.fromStatic(mobile.backend.StorageUtil));
@@ -80,7 +79,7 @@ class HScript
 		env.addModule('meta.state.menus.StoryMenuState', DynamicModule.fromStatic(meta.state.menus.StoryMenuState));
 		env.addModule('meta.state.charting.ChartingState', DynamicModule.fromStatic(meta.state.charting.ChartingState));
 		env.addModule('meta.state.charting.OriginalChartingState', DynamicModule.fromStatic(meta.state.charting.OriginalChartingState));
-		env.addModule('meta.state.charting.TestState', DynamicModule.fromStatic(meta.state.charting.TestState));
+		// env.addModule('meta.state.charting.TestState', DynamicModule.fromStatic(meta.state.charting.TestState));
 		env.addModule('meta.data.ChartLoader', DynamicModule.fromStatic(meta.data.ChartLoader));
 		env.addModule('meta.data.Conductor', DynamicModule.fromStatic(meta.data.Conductor));
 		env.addModule('meta.data.Highscore', DynamicModule.fromStatic(meta.data.Highscore));
@@ -123,7 +122,7 @@ class HScript
 
 	public function loadModule(path:String)
 	{
-		var pArr = path.split('/'); /* WITHOUT POSTFIX IS IMPORTANT! */
+		var pArr = path.split('/'); /** WITHOUT POSTFIX IS IMPORTANT! **/
 		var expr:DynamicModule = DynamicModule.fromString(env, pArr[pArr.length - 1], MobileSys.getContent(Paths.script(path)));
 		packag3 = expr.pack;
 		env.addModule(packag3, expr);
@@ -146,7 +145,7 @@ class HScript
 		return null;
 	}
 
-	/* Receive return val */
+	/** Receive return val **/
 	public function callf(classInstance:DynamicInstance, name:String, ?args:Array<Dynamic>)
 	{
 		try
@@ -160,19 +159,19 @@ class HScript
 		return null;
 	}
 
-	/* Can't get callback */
+	/** Can't get callback **/
 	public function get(classInstance:DynamicInstance, name:String, ?unwrap:Bool = true)
 		return classInstance.get(name);
 
-	/* Set a value */
+	/** Set a value **/
 	public function set(classInstance:DynamicInstance, name:String, value:Dynamic, ?unwrap:Bool = true)
 		return classInstance.set(name, value);
 
-	/* Check methods or fields exists */
+	/** Check methods or fields exists **/
 	public function exists(classInstance:DynamicInstance, name:String)
 		return classInstance.exists(name);
 
-	/* Check if the field is a method */
+	/** Check if the field is a method **/
 	public function isMethod(classInstance:DynamicInstance, name:String)
 		return classInstance.isMethod(name);
 }
