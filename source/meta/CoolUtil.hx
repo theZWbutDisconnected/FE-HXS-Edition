@@ -1,7 +1,7 @@
 package meta;
 
 import meta.state.PlayState;
-import mobile.MobileSys;
+import MPUtils;
 
 using StringTools;
 
@@ -32,7 +32,7 @@ class CoolUtil
 
 	public static function coolTextFile(path:String):Array<String>
 	{
-		var daList:Array<String> = MobileSys.getContent(path).trim().split('\n');
+		var daList:Array<String> = MPUtils.getContent(path).trim().split('\n');
 
 		for (i in 0...daList.length)
 		{
@@ -44,7 +44,7 @@ class CoolUtil
 
 	public static function getOffsetsFromTxt(path:String):Array<Array<String>>
 	{
-		var fullText:String = MobileSys.getContent(path);
+		var fullText:String = MPUtils.getContent(path);
 
 		var firstArray:Array<String> = fullText.split('\n');
 		var swagOffsets:Array<Array<String>> = [];
@@ -59,7 +59,7 @@ class CoolUtil
 	{
 		var libraryArray:Array<String> = [];
 
-		var unfilteredLibrary = MobileSys.readDirectory('$subDir/$library');
+		var unfilteredLibrary = MPUtils.readDirectory('$subDir/$library');
 
 		for (folder in unfilteredLibrary)
 		{
@@ -74,7 +74,7 @@ class CoolUtil
 
 	public static function getAnimsFromTxt(path:String):Array<Array<String>>
 	{
-		var fullText:String = MobileSys.getContent(path);
+		var fullText:String = MPUtils.getContent(path);
 
 		var firstArray:Array<String> = fullText.split('\n');
 		var swagOffsets:Array<Array<String>> = [];

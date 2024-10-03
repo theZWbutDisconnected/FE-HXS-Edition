@@ -12,6 +12,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import meta.data.dependency.FNFSprite;
 import meta.data.font.Alphabet;
+import MPUtils;
 
 typedef PortraitDataDef =
 {
@@ -103,7 +104,7 @@ class DialogueBox extends FlxSpriteGroup
 		var truePath = Paths.file(file);
 
 		// load the json file
-		if (MobileSys.exists(dialoguePath))
+		if (MPUtils.exists(dialoguePath))
 			return dialoguePath;
 		else
 			return truePath;
@@ -234,7 +235,7 @@ class DialogueBox extends FlxSpriteGroup
 			var boxJson = Paths.file('images/dialogue/boxes/$curBox/$curBox.json');
 
 			// load the json and sprite
-			boxData = haxe.Json.parse(MobileSys.getContent(boxJson));
+			boxData = haxe.Json.parse(MPUtils.getContent(boxJson));
 			box.frames = Paths.getSparrowAtlas('dialogue/boxes/$curBox/$curBox');
 
 			// get the states sectioon
@@ -320,9 +321,9 @@ class DialogueBox extends FlxSpriteGroup
 				var portraitJson = Paths.file('images/dialogue/portraits/$curCharacter/$curCharacter.json');
 
 				// load the json file
-				if (MobileSys.exists(portraitJson))
+				if (MPUtils.exists(portraitJson))
 				{
-					portraitData = haxe.Json.parse(MobileSys.getContent(portraitJson));
+					portraitData = haxe.Json.parse(MPUtils.getContent(portraitJson));
 					portrait.frames = Paths.getSparrowAtlas('dialogue/portraits/$curCharacter/$curCharacter');
 				}
 

@@ -35,6 +35,7 @@ import openfl.events.IOErrorEvent;
 import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.ByteArray;
+import MPUtils;
 
 using StringTools;
 
@@ -640,7 +641,7 @@ class OriginalChartingState extends MusicBeatState
 				dummyArrow.y = Math.floor(FlxG.mouse.y / GRID_SIZE) * GRID_SIZE;
 		}
 
-		if (FlxG.keys.justPressed.ENTER || MobileSys.androidBack() || controls.ACCEPT)
+		if (FlxG.keys.justPressed.ENTER || MPUtils.androidBack() || controls.ACCEPT)
 		{
 			lastSection = curSection;
 

@@ -37,6 +37,8 @@ import openfl.display.GraphicsShader;
 import openfl.events.KeyboardEvent;
 import openfl.filters.ShaderFilter;
 import openfl.media.Sound;
+import meta.data.script.HScript;
+import MPUtils;
 
 using StringTools;
 
@@ -158,7 +160,7 @@ class PlayState extends MusicBeatState
 	var mControls:MobileControls;
 	#end
 
-	public var scripts:Array<HScript> = [];
+	public var scriptHandler:ScriptHandler;
 
 	// at the beginning of the playstate
 	override public function create()
@@ -166,12 +168,6 @@ class PlayState extends MusicBeatState
 		super.create();
 
 		instance = this;
-
-		for (i in CoolUtil.findScripts()) {
-			var script:HScript = new HScript();
-			script.loadModule(i);
-			scripts.push(script);
-		}
 
 		// reset any values and variables that are static
 		songScore = 0;
@@ -229,7 +225,8 @@ class PlayState extends MusicBeatState
 		popUpCombo(true);
 		//
 
-		callFunction('SongRuntimeScript', 'onCreate');
+		scriptHandler = new ScriptHandler(['scripts/', 'songs/' + SONG.song.toLowerCase() + '/']);
+		scriptHandler.callFunction('onCreate');
 
 		stageBuild = new Stage(curStage);
 		add(stageBuild);
@@ -430,7 +427,7 @@ class PlayState extends MusicBeatState
 			FlxG.camera.setFilters([new ShaderFilter(shader)]);
 		 */
 
-		callFunction('SongRuntimeScript', 'onCreatePost');
+		scriptHandler.callFunction('onCreatePost');
 	}
 
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey>
@@ -1878,11 +1875,11 @@ class PlayState extends MusicBeatState
 	function callTextbox()
 	{
 		var dialogPath = Paths.json(SONG.song.toLowerCase() + '/dialogue');
-		if (MobileSys.exists(dialogPath))
+		if (MPUtils.exists(dialogPath))
 		{
 			startedCountdown = false;
 
-			dialogueBox = DialogueBox.createDialogue(MobileSys.getContent(dialogPath));
+			dialogueBox = DialogueBox.createDialogue(MPUtils.getContent(dialogPath));
 			dialogueBox.cameras = [dialogueHUD];
 			dialogueBox.whenDaFinish = startCountdown;
 
@@ -2024,15 +2021,5 @@ class PlayState extends MusicBeatState
 		if (Init.trueSettings.get('Disable Antialiasing') && Std.isOfType(Object, FlxSprite))
 			cast(Object, FlxSprite).antialiasing = false;
 		return super.add(Object);
-	}
-
-	function callFunction(className:String, name:String, ?args:Array<Dynamic>) {
-		for (i in scripts) {
-			if (i.hasClass(className)) {
-				var clazz = i.getClass(className);
-				if (clazz.exists(name))
-					i.callf(clazz, name, args);
-			}
-		}
 	}
 }

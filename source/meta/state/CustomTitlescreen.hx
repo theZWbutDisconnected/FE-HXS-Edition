@@ -28,6 +28,7 @@ import meta.data.*;
 import meta.data.dependency.Discord;
 import meta.data.font.Alphabet;
 import meta.state.menus.*;
+import MPUtils;
 
 using StringTools;
 
@@ -156,9 +157,9 @@ class CustomTitlescreen extends MusicBeatState
 	function getIntroTextShit():Array<Array<String>>
 	{
 		var swagGoodArray:Array<Array<String>> = [['no idea what psych engine is', 'vine boom sfx']];
-		if (MobileSys.exists(Paths.txt('introText')))
+		if (MPUtils.exists(Paths.txt('introText')))
 		{
-			var fullText:String = MobileSys.getContent(Paths.txt('introText'));
+			var fullText:String = MPUtils.getContent(Paths.txt('introText'));
 			var firstArray:Array<String> = fullText.split('\n');
 
 			for (i in firstArray)

@@ -14,6 +14,7 @@ import openfl.media.Sound;
 import openfl.system.System;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
+import MPUtils;
 
 class Paths
 {
@@ -119,7 +120,7 @@ class Paths
 	public static function returnGraphic(key:String, ?library:String, ?textureCompression:Bool = false)
 	{
 		var path = getPath('images/$key.png', IMAGE, library);
-		if (MobileSys.exists(path))
+		if (MPUtils.exists(path))
 		{
 			if (!currentTrackedAssets.exists(key))
 			{
@@ -253,15 +254,15 @@ class Paths
 		#if MODS_ALLOWED
 		returnPath = 'mods/$file';
 		finalPath = mobilePath(returnPath);
-		if (!MobileSys.exists(finalPath)) {
+		if (!MPUtils.exists(finalPath)) {
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 			finalPath = mobilePath(returnPath);
 		}
-		if (!MobileSys.exists(finalPath)) {
+		if (!MPUtils.exists(finalPath)) {
 			returnPath = 'assets/$file';
 			finalPath = mobilePath(returnPath);
 			#end
-			if (!MobileSys.exists(finalPath)) {
+			if (!MPUtils.exists(finalPath)) {
 				returnPath = CoolUtil.swapSpaceDash(returnPath);
 				finalPath = mobilePath(returnPath);
 			}
@@ -367,7 +368,7 @@ class Paths
 
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
-		return (FlxAtlasFrames.fromSparrow(image(key, library), MobileSys.getContent(file('images/$key.xml', library))));
+		return (FlxAtlasFrames.fromSparrow(image(key, library), MPUtils.getContent(file('images/$key.xml', library))));
 	}
 
 	inline static public function getPackerAtlas(key:String, ?library:String)

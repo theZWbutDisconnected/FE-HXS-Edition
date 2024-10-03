@@ -1,4 +1,4 @@
-package mobile;
+package ;
 
 import flixel.FlxG;
 import openfl.utils.Assets;
@@ -6,7 +6,7 @@ import sys.FileSystem;
 
 using StringTools;
 
-class MobileSys
+class MPUtils
 {
     public static function justTouched():Bool
 	{

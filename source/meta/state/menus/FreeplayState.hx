@@ -21,6 +21,7 @@ import meta.data.font.Alphabet;
 import openfl.media.Sound;
 import sys.thread.Mutex;
 import sys.thread.Thread;
+import MPUtils;
 
 using StringTools;
 
@@ -90,7 +91,7 @@ class FreeplayState extends MusicBeatState
 			if (!existingSongs.contains(i.toLowerCase()))
 			{
 				var icon:String = 'gf';
-				var chartExists:Bool = MobileSys.exists(Paths.songJson(i, i));
+				var chartExists:Bool = MPUtils.exists(Paths.songJson(i, i));
 				if (chartExists)
 				{
 					var castSong:SwagSong = Song.loadFromJson(i, i);
@@ -169,8 +170,8 @@ class FreeplayState extends MusicBeatState
 		///*
 		var coolDifficultyArray = [];
 		for (i in CoolUtil.difficultyArray)
-			if (MobileSys.exists(Paths.songJson(songName, songName + '-' + i))
-				|| (MobileSys.exists(Paths.songJson(songName, songName)) && i == "NORMAL"))
+			if (MPUtils.exists(Paths.songJson(songName, songName + '-' + i))
+				|| (MPUtils.exists(Paths.songJson(songName, songName)) && i == "NORMAL"))
 				coolDifficultyArray.push(i);
 
 		if (coolDifficultyArray.length > 0)

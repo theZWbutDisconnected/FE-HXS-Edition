@@ -3,6 +3,7 @@ package gameObjects.userInterface;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.FlxGraphic;
+import MPUtils;
 
 using StringTools;
 
@@ -26,7 +27,7 @@ class HealthIcon extends FlxSprite
 			trimmedCharacter = trimmedCharacter.substring(0, trimmedCharacter.indexOf('-'));
 
 		var iconPath = char;
-		if (!MobileSys.exists(Paths.getPath('images/icons/icon-' + iconPath + '.png', IMAGE)))
+		if (!MPUtils.exists(Paths.getPath('images/icons/icon-' + iconPath + '.png', IMAGE)))
 		{
 			if (iconPath != trimmedCharacter)
 				iconPath = trimmedCharacter;

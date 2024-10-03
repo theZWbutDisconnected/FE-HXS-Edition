@@ -45,6 +45,7 @@ import openfl.geom.Rectangle;
 import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.ByteArray;
+import MPUtils;
 
 using StringTools;
 
@@ -282,7 +283,7 @@ class ChartingState extends MusicBeatState
 		}
 		// */
 
-		if (FlxG.keys.justPressed.ENTER || controls.ACCEPT || MobileSys.androidBack())
+		if (FlxG.keys.justPressed.ENTER || controls.ACCEPT || MPUtils.androidBack())
 		{
 			songPosition = songMusic.time;
 

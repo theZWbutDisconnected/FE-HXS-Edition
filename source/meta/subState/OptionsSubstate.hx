@@ -10,6 +10,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import meta.MusicBeat.MusicBeatSubState;
 import meta.data.font.Alphabet;
+import MPUtils;
 
 using StringTools;
 
@@ -342,7 +343,7 @@ class OptionsSubstate extends MusicBeatSubState
 		if (curSelection != keyOptions.length - 1)
 		{
 			// be able to close the submenu
-			if (FlxG.keys.justPressed.ESCAPE || controls.BACK || MobileSys.androidBack())
+			if (FlxG.keys.justPressed.ESCAPE || controls.BACK || MPUtils.androidBack())
 				closeSubmenu();
 			else if (FlxG.keys.justPressed.ANY)
 			{

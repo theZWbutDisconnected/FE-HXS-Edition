@@ -15,6 +15,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.FlxSprite;
 import meta.MusicBeat;
+import MPUtils;
 
 class MobileMenu extends MusicBeatSubState
 {
@@ -141,7 +142,7 @@ class MobileMenu extends MusicBeatSubState
 		else if (curControl != 2)
 			vpad.alpha = alphaItems[curAlpha];
 
-		if (controls.BACK || MobileSys.androidBack())
+		if (controls.BACK || MPUtils.androidBack())
 		{
 			config.setAlpha(curAlpha);
             config.setControlMode(curControl);

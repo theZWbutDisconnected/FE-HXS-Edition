@@ -1,11 +1,11 @@
-package meta.data;
+package meta.data.script;
 
 import flixel.FlxG;
 // import flxanimate.FlxAnimate;
 import haxe.ds.StringMap;
 import hscript.Interp;
 import hscript.Parser;
-import mobile.MobileSys;
+import MPUtils;
 
 using StringTools;
 
@@ -37,7 +37,7 @@ class HScript
 			}
 		}
 
-		var handlerMethods = MobileSys.getContent(Paths.script(path));
+		var handlerMethods = MPUtils.getContent(Paths.script(path));
 		// handlerMethods = Preprocessor.preprocess(handlerMethods);
 
 		// importing!!

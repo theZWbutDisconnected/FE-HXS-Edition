@@ -1,9 +1,10 @@
-package meta.data;
+package meta.data.script;
 
 import interpret.Env;
 import interpret.DynamicModule;
 import interpret.DynamicInstance;
 import haxe.macro.Expr;
+import MPUtils;
 
 using StringTools;
 
@@ -52,6 +53,7 @@ class HScript
 		env.addModule('openfl.utils.Assets', DynamicModule.fromStatic(openfl.utils.Assets));
 		env.addModule('sys.FileSystem', DynamicModule.fromStatic(sys.FileSystem));
 		env.addModule('sys.io.File', DynamicModule.fromStatic(sys.io.File));
+		env.addModule('MPUtils', DynamicModule.fromStatic(MPUtils));
 		env.addModule('Paths', DynamicModule.fromStatic(Paths));
 		env.addModule('Main', DynamicModule.fromStatic(Main));
 		// env.addModule('Init', DynamicModule.fromStatic(Init));
@@ -60,7 +62,6 @@ class HScript
 		env.addModule('mobile.MobileConfig', DynamicModule.fromStatic(mobile.MobileConfig));
 		// env.addModule('mobile.MobileControls', DynamicModule.fromStatic(mobile.MobileControls));
 		env.addModule('mobile.MobileMenu', DynamicModule.fromStatic(mobile.MobileMenu));
-		env.addModule('mobile.MobileSys', DynamicModule.fromStatic(mobile.MobileSys));
 		env.addModule('mobile.backend.StorageUtil', DynamicModule.fromStatic(mobile.backend.StorageUtil));
 		env.addModule('meta.Controls', DynamicModule.fromStatic(meta.Controls));
 		env.addModule('meta.CoolUtil', DynamicModule.fromStatic(meta.CoolUtil));
@@ -83,7 +84,7 @@ class HScript
 		env.addModule('meta.data.ChartLoader', DynamicModule.fromStatic(meta.data.ChartLoader));
 		env.addModule('meta.data.Conductor', DynamicModule.fromStatic(meta.data.Conductor));
 		env.addModule('meta.data.Highscore', DynamicModule.fromStatic(meta.data.Highscore));
-		env.addModule('meta.data.HScript', DynamicModule.fromStatic(meta.data.HScript));
+		env.addModule('meta.data.HScript', DynamicModule.fromStatic(meta.data.script.HScript));
 		env.addModule('meta.data.PlayerSettings', DynamicModule.fromStatic(meta.data.PlayerSettings));
 		env.addModule('meta.data.Section', DynamicModule.fromStatic(meta.data.Section));
 		env.addModule('meta.data.Song', DynamicModule.fromStatic(meta.data.Song));
@@ -123,20 +124,23 @@ class HScript
 	public function loadModule(path:String)
 	{
 		var pArr = path.split('/'); /** WITHOUT POSTFIX IS IMPORTANT! **/
-		var expr:DynamicModule = DynamicModule.fromString(env, pArr[pArr.length - 1], MobileSys.getContent(Paths.script(path)));
+		var expr:DynamicModule = DynamicModule.fromString(env, pArr[pArr.length - 1], MPUtils.getContent(Paths.script(path)));
 		packag3 = expr.pack;
 		env.addModule(packag3, expr);
 		env.link();
 	}
 
+	public function getPackageFile()
+		return env.modules.get(packag3);
+
 	public function hasClass(name:String)
-		return env.modules.get(packag3).dynamicClasses.exists(name);
+		return getPackageFile().dynamicClasses.exists(name);
 
 	public function getClass(name:String)
 	{
 		if (hasClass(name))
 		{
-			return env.modules.get(packag3).dynamicClasses.get(name).createInstance();
+			return getPackageFile().dynamicClasses.get(name).createInstance();
 		}
 		else
 		{

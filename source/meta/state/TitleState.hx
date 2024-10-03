@@ -26,6 +26,7 @@ import meta.data.*;
 import meta.data.dependency.Discord;
 import meta.data.font.Alphabet;
 import meta.state.menus.*;
+import MPUtils;
 
 using StringTools;
 
@@ -153,9 +154,9 @@ class TitleState extends MusicBeatState
 	function getIntroTextShit():Array<Array<String>>
 	{
 		var swagGoodArray:Array<Array<String>> = [];
-		if (MobileSys.exists(Paths.txt('introText')))
+		if (MPUtils.exists(Paths.txt('introText')))
 		{
-			var fullText:String = MobileSys.getContent(Paths.txt('introText'));
+			var fullText:String = MPUtils.getContent(Paths.txt('introText'));
 			var firstArray:Array<String> = fullText.split('\n');
 
 			for (i in firstArray)
@@ -173,7 +174,7 @@ class TitleState extends MusicBeatState
 			Conductor.songPosition = FlxG.sound.music.time;
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
 
-		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || MobileSys.justTouched();
+		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || MPUtils.justTouched();
 		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 
 		if (gamepad != null)

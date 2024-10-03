@@ -18,18 +18,18 @@ import mobile.MobileControls;
 import mobile.backend.StorageUtil;
 #end
 
-import lime.app.Application;
-import mobile.MobileSys;
-
 #if sys
 import sys.*;
 import sys.io.*;
 #end
+import meta.data.script.ScriptHandler;
+import MPUtils;
 
 import meta.CoolUtil;
 import Init;
 import Paths;
 
+import lime.app.Application;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
 

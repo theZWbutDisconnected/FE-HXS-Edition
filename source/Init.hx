@@ -11,7 +11,7 @@ import meta.state.*;
 import meta.state.charting.*;
 import openfl.filters.BitmapFilter;
 import openfl.filters.ColorMatrixFilter;
-import meta.data.HScript;
+import meta.data.script.HScript;
 
 /** 
 	Enumerator for settingtypes
