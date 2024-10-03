@@ -39,12 +39,21 @@ class HScript
 		env.link();
 	}
 
-	public function getClass(name:String) {
-		var clazz = env.modules.get(packag3).dynamicClasses.get(name);
-		return clazz.createInstance();
-	}
+	public function getClass(name:String)
+		return env.modules.get(packag3).dynamicClasses.get(name).createInstance();
 
-	public function callf(classInstance:DynamicInstance, name:String, ?args:Array<Dynamic>) {
+	public function callf(classInstance:DynamicInstance, name:String, ?args:Array<Dynamic>)
 		return classInstance.call(name, args);
-	}
+
+	public function get(classInstance:DynamicInstance, name:String, ?unwrap:Bool = true)
+		return classInstance.get(name);
+
+	public function set(classInstance:DynamicInstance, name:String, value:Dynamic, ?unwrap:Bool = true)
+		return classInstance.set(name, value);
+
+	public function exists(classInstance:DynamicInstance, name:String)
+		return classInstance.exists(name);
+
+	public function isMethod(classInstance:DynamicInstance, name:String)
+		return classInstance.isMethod(name);
 }

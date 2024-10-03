@@ -28,7 +28,6 @@ import sys.io.File;
 import openfl.events.MouseEvent;
 import flash.display.BitmapData;
 import flash.events.ErrorEvent;
-import meta.data.HScript;
 
 // Here we actually import the states and metadata, and just the metadata.
 // It's nice to have modularity so that we don't have ALL elements loaded at the same time.
@@ -153,10 +152,6 @@ class Main extends Sprite
 		var gameCreate:FlxGame;
 		gameCreate = new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash);
 		addChild(gameCreate); // and create it afterwards
-
-		var script:HScript = new HScript();
-		script.loadModule('scripts/Test');
-		script.callf(script.getClass('Test'), 'main');
 
 		// default game FPS settings, I'll probably comment over them later.
 		// addChild(new FPS(10, 3, 0xFFFFFF));

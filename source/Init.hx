@@ -11,6 +11,7 @@ import meta.state.*;
 import meta.state.charting.*;
 import openfl.filters.BitmapFilter;
 import openfl.filters.ColorMatrixFilter;
+import meta.data.HScript;
 
 /** 
 	Enumerator for settingtypes
@@ -260,6 +261,13 @@ class Init extends FlxState
 		Sys.setCwd(StorageUtil.getStorageDirectory());
 		CoolUtil.showPopUp(Sys.getCwd(), "System CWD");
 		#end
+
+		var script:HScript = new HScript();
+		script.loadModule('scripts/Test');
+		var clazz = script.getClass('Test');
+		script.callf(clazz, 'main');
+		trace(script.get(clazz, 'test'));
+		trace(script.callf(clazz, 'returnMain'));
 
 		#if !html5
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));
