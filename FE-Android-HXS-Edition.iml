@@ -86,13 +86,13 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: hscript:2.5.0">
+      <library name="Haxelib: hscript:2.3.0">
         <CLASSES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/hscript/2,5,0" />
+          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/hscript/2,3,0" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/hscript/2,5,0" />
+          <root url="file://D:/HaxeToolkit436/haxe/libs/psych_073/hscript/2,3,0" />
         </SOURCES>
       </library>
     </orderEntry>
