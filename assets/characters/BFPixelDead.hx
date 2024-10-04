@@ -3,7 +3,7 @@ package runtime.characters;
 import gameObjects.Character;
 import Paths;
 
-class BFPixelDead {
+class BFPixelDead extends Character {
     public function init(name):Character {
         if (name == 'bf-pixel-dead'){
             var character:Character = new Character();

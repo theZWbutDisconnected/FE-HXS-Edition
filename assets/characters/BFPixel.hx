@@ -3,7 +3,7 @@ package runtime.characters;
 import gameObjects.Character;
 import Paths;
 
-class BFPixel {
+class BFPixel extends Character {
     public function init(name):Character {
         if(name == 'bf-pixel'){
             var character:Character = new Character();

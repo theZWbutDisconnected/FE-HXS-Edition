@@ -23,7 +23,7 @@ class BFCar {
             character.playAnim('idle');
 
             character.flipX = true;
-            return character;
+            return this;
         }
         return null;
     }

@@ -3,7 +3,7 @@ package runtime.characters;
 import gameObjects.Character;
 import Paths;
 
-class GFChristmas {
+class GFChristmas extends Character {
     public function init(name):Character {
         if(name == 'gf-christmas'){
             var character:Character = new Character();

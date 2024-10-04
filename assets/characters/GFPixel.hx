@@ -4,7 +4,7 @@ import gameObjects.Character;
 import Paths;
 import meta.state.PlayState;
 
-class GFPixel {
+class GFPixel extends Character {
     public function init(name):Character {
         if(name == 'gf-pixel'){
             var character:Character = new Character();
