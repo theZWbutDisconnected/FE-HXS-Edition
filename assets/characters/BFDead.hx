@@ -3,7 +3,7 @@ package runtime.characters;
 import gameObjects.Character;
 import Paths;
 
-class BFDead extends Character {
+class BFDead {
     public function init(name):Character {
         if(name == 'bf-dead'){
             var character:Character = new Character();

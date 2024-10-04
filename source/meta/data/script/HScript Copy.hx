@@ -14,7 +14,10 @@ import lime.app.Application as LimeApplication;
 import lime.ui.WindowAttributes;
 #end
 
-
+/**
+ * From Hypno's Lullaby v2 Source Code
+ * Modified by theZWbutDisconnected(ZerWhit)
+**/
 class HScript
 {
 	var interp:Interp = new Interp();

@@ -13,6 +13,9 @@ import lime.app.Application as LimeApplication;
 import lime.ui.WindowAttributes;
 #end
 
+/**
+ * @authods theZWbutDisconnected(ZerWhit)
+**/
 class HScript
 {
 	public var env:Env = new Env();

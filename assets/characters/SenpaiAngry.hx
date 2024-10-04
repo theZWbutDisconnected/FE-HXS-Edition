@@ -3,7 +3,7 @@ package runtime.characters;
 import gameObjects.Character;
 import Paths;
 
-class SenpaiAngry extends Character {
+class SenpaiAngry {
     public function init(name):Character {
         if(name == 'senpai-angry'){
             var character:Character = new Character();

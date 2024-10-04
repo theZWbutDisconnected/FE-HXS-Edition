@@ -3,7 +3,7 @@ package runtime.characters;
 import gameObjects.Character;
 import Paths;
 
-class Monster extends Character {
+class Monster {
     public function init(name):Character {
         if(name == 'monster'){
             var character:Character = new Character();

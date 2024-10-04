@@ -4,10 +4,12 @@ import meta.data.script.HScript;
 
 class ScriptHandler {
     public var scripts:Array<HScript> = [];
-    public var allows:Array<String>;
+    public var allowPaths:Array<String>;
+    public var allowTypes:Array<Dynamic>;
 
-    public function new(allowScriptPaths:Array<String>) {
-        allows = allowScriptPaths;
+    public function new(?allowPaths:Array<String>, ?allowTypes:Array<String>) {
+        this.allowPaths = allowPaths;
+        this.allowTypes = allowTypes;
         for (i in CoolUtil.findScripts()) {
             if (contains(i)) {
                 var script:HScript = new HScript();
@@ -32,7 +34,7 @@ class ScriptHandler {
     }
 
     function contains(str:String) {
-        for (i in allows) {
+        for (i in allowPaths) {
             if (str.toLowerCase().contains(i)) {
                 return true;
             }
