@@ -19,7 +19,7 @@ class ScriptHandler {
         }
     }
 
-    public function callFunction(name:String, ?args:Array<Dynamic>) {
+    public function callFunction(name:String, ?args:Array<Dynamic>):Dynamic {
         for (i in scripts) {
             for (j in i.getPackageFile().dynamicClasses) {
                 var clazz = j.createInstance();
