@@ -117,9 +117,9 @@ class Paths
 		localTrackedAssets = [];
 	}
 
-	public static function returnGraphic(key:String, ?library:String, ?textureCompression:Bool = false)
+	public static function returnGraphic(key:String, ?library:String, ?textureCompression:Bool = false, ?stageGraphic:Bool = false)
 	{
-		var path = getPath('images/$key.png', IMAGE, library);
+		var path = getPath((stageGraphic ? 'stages/': '') + 'images/$key.png', IMAGE, library);
 		if (MPUtils.exists(path))
 		{
 			if (!currentTrackedAssets.exists(key))
@@ -261,7 +261,7 @@ class Paths
 		if (!MPUtils.exists(finalPath)) {
 			returnPath = 'assets/$file';
 			finalPath = mobilePath(returnPath);
-			#end
+		#end
 			if (!MPUtils.exists(finalPath)) {
 				returnPath = CoolUtil.swapSpaceDash(returnPath);
 				finalPath = mobilePath(returnPath);
@@ -291,9 +291,9 @@ class Paths
 	    return path;
 	}
 
-	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)
+	inline static public function file(file:String, type:AssetType = TEXT, ?library:String, ?stage:Bool = false)
 	{
-		return getPath(file, type, library);
+		return getPath((stage ? 'stages/' : '') + file, type, library);
 	}
 
 	inline static public function txt(key:String, ?library:String)
@@ -355,9 +355,9 @@ class Paths
 		return inst;
 	}
 
-	inline static public function image(key:String, ?library:String, ?textureCompression:Bool = false)
+	inline static public function image(key:String, ?library:String, ?textureCompression:Bool = false, ?stage:Bool = false)
 	{
-		var returnAsset:FlxGraphic = returnGraphic(key, library, textureCompression);
+		var returnAsset:FlxGraphic = returnGraphic(key, library, textureCompression, stage);
 		return returnAsset;
 	}
 
@@ -366,13 +366,13 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-	inline static public function getSparrowAtlas(key:String, ?library:String)
+	inline static public function getSparrowAtlas(key:String, ?library:String, ?stage:Bool = false)
 	{
-		return (FlxAtlasFrames.fromSparrow(image(key, library), MPUtils.getContent(file('images/$key.xml', library))));
+		return (FlxAtlasFrames.fromSparrow(image(key, library, stage), MPUtils.getContent(file('images/$key.xml', library, stage))));
 	}
 
-	inline static public function getPackerAtlas(key:String, ?library:String)
+	inline static public function getPackerAtlas(key:String, ?library:String, ?stage:Bool = false)
 	{
-		return (FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library)));
+		return (FlxAtlasFrames.fromSpriteSheetPacker(image(key, library, stage), file('images/$key.txt', library, stage)));
 	}
 }

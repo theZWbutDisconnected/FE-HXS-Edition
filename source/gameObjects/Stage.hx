@@ -6,6 +6,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.FlxBasic;
 import flixel.addons.effects.FlxTrail;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -52,12 +53,17 @@ class Stage extends FlxTypedGroup<FlxBasic>
 
 	public var foreground:FlxTypedGroup<FlxBasic>;
 
+	public var scriptHandler:ScriptHandler;
+
 	public function new(curStage)
 	{
 		super();
-		this.curStage = curStage;
 
 		/// get hardcoded stage type if chart is fnf style
+
+		// to apply to foreground use foreground.add(); instead of add();
+		foreground = new FlxTypedGroup<FlxBasic>();
+		
 		if (PlayState.determinedChartType == "FNF")
 		{
 			// this is because I want to avoid editing the fnf chart type
@@ -82,11 +88,14 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					curStage = 'stage';
 			}
 
-			PlayState.curStage = curStage;
 		}
-
-		// to apply to foreground use foreground.add(); instead of add();
-		foreground = new FlxTypedGroup<FlxBasic>();
+		
+		scriptHandler = new ScriptHandler(['stages/' + curStage + '/']);
+		var scriptStage:FlxTypedGroup<FlxBasic> = scriptHandler.callFunction('init');
+		if (scriptStage != null) add(scriptStage);
+		else curStage = 'stage';
+		
+		PlayState.curStage = curStage;
 
 		//
 		switch (curStage)
@@ -336,7 +345,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				bg.scale.set(6, 6);
 				add(bg);
 
-			default:
+			case 'stage':
 				PlayState.defaultCamZoom = 0.9;
 				curStage = 'stage';
 				var bg:FNFSprite = new FNFSprite(-600, -200).loadGraphic(Paths.image('backgrounds/' + curStage + '/stageback'));
@@ -367,6 +376,8 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				// add to the final array
 				add(stageCurtains);
 		}
+		
+		this.curStage = curStage;
 	}
 
 	// return the girlfriend's type
