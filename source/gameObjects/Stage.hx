@@ -64,6 +64,11 @@ class Stage extends FlxTypedGroup<FlxBasic>
 		// to apply to foreground use foreground.add(); instead of add();
 		foreground = new FlxTypedGroup<FlxBasic>();
 		
+		scriptHandler = new ScriptHandler(['stages/' + curStage + '/']);
+		var scriptStage:FlxTypedGroup<FlxBasic> = scriptHandler.callFunction('init');
+		if (scriptStage != null) add(scriptStage);
+		else curStage = 'stage';
+		
 		if (PlayState.determinedChartType == "FNF")
 		{
 			// this is because I want to avoid editing the fnf chart type
@@ -89,11 +94,6 @@ class Stage extends FlxTypedGroup<FlxBasic>
 			}
 
 		}
-		
-		scriptHandler = new ScriptHandler(['stages/' + curStage + '/']);
-		var scriptStage:FlxTypedGroup<FlxBasic> = scriptHandler.callFunction('init');
-		if (scriptStage != null) add(scriptStage);
-		else curStage = 'stage';
 		
 		PlayState.curStage = curStage;
 
