@@ -119,7 +119,7 @@ class Paths
 
 	public static function returnGraphic(key:String, ?library:String, ?textureCompression:Bool = false, ?stageGraphic:Bool = false)
 	{
-		var path = getPath((stageGraphic ? 'stages/': '') + 'images/$key.png', IMAGE, library);
+		var path = getPath((stageGraphic ? 'stages/${PlayState.curStage}/': '') + 'images/$key.png', IMAGE, library);
 		if (MPUtils.exists(path))
 		{
 			if (!currentTrackedAssets.exists(key))
