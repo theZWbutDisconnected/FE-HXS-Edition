@@ -27,6 +27,7 @@ class HScript
 		env.addModule('StringTools', DynamicModule.fromStatic(StringTools));
 		env.addModule('flixel.FlxCamera', DynamicModule.fromStatic(flixel.FlxCamera));
 		env.addModule('flixel.FlxG', DynamicModule.fromStatic(flixel.FlxG));
+		env.addModule('flixel.FlxBasic', DynamicModule.fromStatic(flixel.FlxBasic));
 		env.addModule('flixel.FlxSprite', DynamicModule.fromStatic(flixel.FlxSprite));
 		env.addModule('flixel.graphics.FlxGraphic', DynamicModule.fromStatic(flixel.graphics.FlxGraphic));
 		env.addModule('flixel.graphics.tile.FlxGraphicsShader', DynamicModule.fromStatic(flixel.graphics.tile.FlxGraphicsShader));
