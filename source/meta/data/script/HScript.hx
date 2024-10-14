@@ -166,7 +166,7 @@ class HScript
 		return null;
 	}
 
-	/** Can't get callback **/
+	/** Get a value, not callback **/
 	public function get(classInstance:DynamicInstance, name:String, ?unwrap:Bool = true)
 		return classInstance.get(name);
 
