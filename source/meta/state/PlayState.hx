@@ -838,7 +838,7 @@ class PlayState extends MusicBeatState
 						+ (Math.cos(flixel.math.FlxAngle.asRadians(daNote.noteDirection)) * psuedoY)
 						+ (Math.sin(flixel.math.FlxAngle.asRadians(daNote.noteDirection)) * psuedoX);
 					// painful math equation
-					daNote.x = strumline.receptors.members[Math.floor(daNote.noteData)].x
+					daNote.x = strumline.receptors.members[Math.floor(Math.abs(daNote.noteData))].x
 						+ (Math.cos(flixel.math.FlxAngle.asRadians(daNote.noteDirection)) * psuedoX)
 						+ (Math.sin(flixel.math.FlxAngle.asRadians(daNote.noteDirection)) * psuedoY);
 
