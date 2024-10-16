@@ -164,7 +164,7 @@ jobs:
             ~/.gradle
             export/debug/windows/haxe
             export/debug/windows/obj
-          key: cache-windows-build
+          key: cache-debug-windows-build
 
       - name: Install Libraries
         run: |
