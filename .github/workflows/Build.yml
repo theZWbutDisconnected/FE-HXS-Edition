@@ -49,6 +49,15 @@ jobs:
             export/release/android/haxe
             export/release/android/obj
           key: cache-android-build
+      
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/haxelib
+            ~/.gradle
+            export/release/android/haxe
+            export/release/android/obj
 
       - name: Install Libraries
         run: |
