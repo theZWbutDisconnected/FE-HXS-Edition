@@ -38,10 +38,10 @@ jobs:
         uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.3.6
-      
-      - name: Cache Gradle packages
-        uses: actions/cache@v3
-        id: cache-android-build
+
+      - name: Restore Previous Cache
+        id: cache-debug-build-android-restore
+        uses: actions/cache/restore@main
         with:
           path: |
             ~/haxelib
