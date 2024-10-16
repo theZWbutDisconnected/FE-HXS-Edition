@@ -294,7 +294,7 @@ class Paths
 
 	inline static public function file(file:String, type:AssetType = TEXT, ?library:String, ?stage:Bool = false)
 	{
-		return getPath((stage ? 'stages/' : '') + file, type, library);
+		return getPath((stage ? 'stages/${PlayState.curStage}/' : '') + file, type, library);
 	}
 
 	inline static public function txt(key:String, ?library:String)
