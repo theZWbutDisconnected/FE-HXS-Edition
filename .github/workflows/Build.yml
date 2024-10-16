@@ -106,7 +106,7 @@ jobs:
           haxe-version: 4.3.6
 
       - name: Restore Previous Cache
-        id: cache-debug-build-windows-restore
+        id: cache-release-build-windows-restore
         uses: actions/cache@v4
         with:
           path: |
@@ -162,8 +162,8 @@ jobs:
           path: |
             ~/haxelib
             ~/.gradle
-            export/release/windows/haxe
-            export/release/windows/obj
+            export/debug/windows/haxe
+            export/debug/windows/obj
           key: cache-windows-build
 
       - name: Install Libraries
