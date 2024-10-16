@@ -750,7 +750,8 @@ class PlayState extends MusicBeatState
 			{
 				var dunceNote:Note = unspawnNotes[0];
 				// push note to its correct strumline
-				strumLines.members[Math.floor((Math.abs(dunceNote.noteData) + (dunceNote.mustPress ? 4 : 0)) / numberOfKeys)].push(dunceNote);
+				var noteData:Int = dunceNote.noteData;
+				strumLines.members[Math.floor(((noteData < 0 ? 0 : noteData + (dunceNote.mustPress ? 4 : 0))) / numberOfKeys)].push(dunceNote);
 				unspawnNotes.splice(unspawnNotes.indexOf(dunceNote), 1);
 			}
 
@@ -830,7 +831,8 @@ class PlayState extends MusicBeatState
 				strumline.allNotes.forEachAlive(function(daNote:Note)
 				{
 					var roundedSpeed = FlxMath.roundDecimal(daNote.noteSpeed, 2);
-					var receptorPosY:Float = strumline.receptors.members[Math.floor(Math.abs(daNote.noteData))].y + Note.swagWidth / 6;
+					var noteData:Int = daNote.noteData;
+					var receptorPosY:Float = strumline.receptors.members[Math.floor((noteData < 0 ? 0 : noteData))].y + Note.swagWidth / 6;
 					var psuedoY:Float = (downscrollMultiplier * -((Conductor.songPosition - daNote.strumTime) * (0.45 * roundedSpeed)));
 					var psuedoX = 25 + daNote.noteVisualOffset;
 
@@ -838,7 +840,7 @@ class PlayState extends MusicBeatState
 						+ (Math.cos(flixel.math.FlxAngle.asRadians(daNote.noteDirection)) * psuedoY)
 						+ (Math.sin(flixel.math.FlxAngle.asRadians(daNote.noteDirection)) * psuedoX);
 					// painful math equation
-					daNote.x = strumline.receptors.members[Math.floor(Math.abs(daNote.noteData))].x
+					daNote.x = strumline.receptors.members[Math.floor((noteData < 0 ? 0 : noteData))].x
 						+ (Math.cos(flixel.math.FlxAngle.asRadians(daNote.noteDirection)) * psuedoX)
 						+ (Math.sin(flixel.math.FlxAngle.asRadians(daNote.noteDirection)) * psuedoY);
 
