@@ -156,6 +156,7 @@ class PauseSubState extends MusicBeatSubState
 				case "Chart Editor":
 					Main.switchState(this, new meta.state.charting.OriginalChartingState());
 				case "Botplay Toggle": 
+				    @:privateAccess
 				    PlayState.instance.boyfriendStrums.autoplay = !PlayState.instance.boyfriendStrums.autoplay;
 				case "Exit to menu":
 					PlayState.resetMusic();
