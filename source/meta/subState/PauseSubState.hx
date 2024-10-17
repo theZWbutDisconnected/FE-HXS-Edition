@@ -20,7 +20,7 @@ class PauseSubState extends MusicBeatSubState
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Chart Editor', 'Exit to menu'];
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Chart Editor', 'Botplay Toggle', 'Exit to menu'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -155,6 +155,8 @@ class PauseSubState extends MusicBeatSubState
 					Main.switchState(this, new PlayState());
 				case "Chart Editor":
 					Main.switchState(this, new meta.state.charting.OriginalChartingState());
+				case "Botplay Toggle": 
+				    PlayState.instance.boyfriendStrums.autoplay = !PlayState.instance.boyfriendStrums.autoplay;
 				case "Exit to menu":
 					PlayState.resetMusic();
 					PlayState.deaths = 0;

@@ -68,6 +68,8 @@ class PlayState extends MusicBeatState
 	public static var gf:Character;
 	public static var boyfriend:Boyfriend;
 
+	public var botplayText:FlxText;
+
 	public static var assetModifier:String = 'base';
 	public static var changeableSkin:String = 'default';
 
@@ -356,6 +358,13 @@ class PlayState extends MusicBeatState
 		dialogueHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(dialogueHUD);
 
+		botplayText = new FlxText(400, 85 + (Init.trueSettings.get('Downscroll') ? FlxG.height - 200 : 0), FlxG.width - 800, "BOTPLAY", 32);
+		botplayText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayText.scrollFactor.set();
+		botplayText.borderSize = 1.25;
+		add(botplayText);
+		botplayText.cameras = [dialogueHUD];
+
 		#if MOBILE_CONTROLS
 		mControls = new MobileControls();
 		var camControls:FlxCamera = new FlxCamera();
@@ -559,11 +568,19 @@ class PlayState extends MusicBeatState
 
 	var lastSection:Int = 0;
 
+	var botplayAlpha:Float = 0;
+
+	public var botplaySine:Float = 0;
+
 	override public function update(elapsed:Float)
 	{
 		stageBuild.stageUpdateConstant(elapsed, boyfriend, gf, dadOpponent);
 
 		super.update(elapsed);
+		
+		botplayAlpha = FlxMath.lerp(botplayAlpha, strumLines.members[playerLane].autoplay ? 1 : 0, elapsed / (1 / 60));
+		botplaySine += 180 * (elapsed / 4);
+		botplayText.alpha = botplayAlpha - Math.abs(Math.sin((Math.PI * botplaySine) / 180));
 
 		if (health > 2)
 			health = 2;
