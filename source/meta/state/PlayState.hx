@@ -38,6 +38,7 @@ import openfl.events.KeyboardEvent;
 import openfl.filters.ShaderFilter;
 import openfl.media.Sound;
 import meta.data.script.HScript;
+import flixel.text.FlxText;
 import MPUtils;
 
 using StringTools;
