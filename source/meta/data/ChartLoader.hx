@@ -76,29 +76,38 @@ class ChartLoader
 						// set the note's length (sustain note)
 						swagNote.sustainLength = songNotes[2];
 						swagNote.scrollFactor.set(0, 0);
-						var susLength:Float = swagNote.sustainLength; // sus amogus
-
-						// adjust sustain length
-						susLength = susLength / Conductor.stepCrochet;
-						// push the note to the array we'll push later to the playstate
-						unspawnNotes.push(swagNote);
-						// STOP POSTING ABOUT AMONG US
-						// basically said push the sustain notes to the array respectively
-						for (susNote in 0...Math.floor(susLength))
-						{
-							oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
-							var sustainNote:Note = ForeverAssets.generateArrow(PlayState.assetModifier,
-								daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, 0, daNoteAlt, true, oldNote);
-							sustainNote.scrollFactor.set();
-
-							unspawnNotes.push(sustainNote);
-							sustainNote.mustPress = gottaHitNote;
-							/*
-								This is handled in engine anyways, not necessary!
-								if (sustainNote.mustPress)
-									sustainNote.x += FlxG.width / 2;
-							 */
-						}
+						
+						if (swagNote.noteData != -1) {
+    						var susLength:Float = swagNote.sustainLength; // sus amogus
+    
+    						// adjust sustain length
+    						susLength = susLength / Conductor.stepCrochet;
+    						// push the note to the array we'll push later to the playstate
+    						unspawnNotes.push(swagNote);
+    						// STOP POSTING ABOUT AMONG US
+    						// basically said push the sustain notes to the array respectively
+    						for (susNote in 0...Math.floor(susLength))
+    						{
+    							oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
+    							var sustainNote:Note = ForeverAssets.generateArrow(PlayState.assetModifier,
+    								daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, 0, daNoteAlt, true, oldNote);
+    							sustainNote.scrollFactor.set();
+    
+    							unspawnNotes.push(sustainNote);
+    							sustainNote.mustPress = gottaHitNote;
+    							/*
+    								This is handled in engine anyways, not necessary!
+    								if (sustainNote.mustPress)
+    									sustainNote.x += FlxG.width / 2;
+    							 */
+    						} else {
+    						    swagNote.sustainLength = songNotes[2];
+    						    swagNote.value1 = songNotes[3];
+    						    swagNote.value2 = songNotes[4];
+    						    
+    						    unspawnNotes.push(swagNote);
+    						}
+    					}
 						// oh and set the note's must hit section
 						swagNote.mustPress = gottaHitNote;
 					}

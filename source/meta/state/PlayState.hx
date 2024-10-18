@@ -1000,6 +1000,9 @@ class PlayState extends MusicBeatState
 
 	function destroyNote(strumline:Strumline, daNote:Note)
 	{
+	    if (daNote.noteData == -1) 
+	        noteEventTrigger(daNote.sustainLength, daNote.value1, daNote.value2);
+	    
 		daNote.active = false;
 		daNote.exists = false;
 
@@ -1011,6 +1014,11 @@ class PlayState extends MusicBeatState
 		if (chosenGroup.members.contains(daNote))
 			chosenGroup.remove(daNote, true);
 		daNote.destroy();
+	}
+	
+	function noteEventTrigger(name:String, v1:String, v2:String) {
+	    scriptHandler.callFunction('onEvent', [name, v1, v2]);
+	    stageBuilder.scriptHandler.callFunction('onEvent', [name, v1, v2]);
 	}
 
 	function goodNoteHit(coolNote:Note, characters:Array<Character>, characterStrums:Strumline, ?canDisplayJudgement:Bool = true)

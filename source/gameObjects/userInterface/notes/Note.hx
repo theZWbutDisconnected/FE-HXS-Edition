@@ -31,8 +31,12 @@ class Note extends FNFSprite
 	public var wasGoodHit:Bool = false;
 	public var prevNote:Note;
 
-	public var sustainLength:Float = 0;
+	public var sustainLength:Dynamic = 0;
 	public var isSustainNote:Bool = false;
+	
+	// for event tiggetion
+	public var value1:String = '';
+	public var value2:String = '';
 
 	// only useful for charting stuffs
 	public var chartSustain:FlxSprite = null;
