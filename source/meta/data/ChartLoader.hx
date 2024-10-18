@@ -100,13 +100,13 @@ class ChartLoader
     								if (sustainNote.mustPress)
     									sustainNote.x += FlxG.width / 2;
     							 */
-    						} else {
+    						} 
+    					} else {
     						    swagNote.sustainLength = songNotes[2];
     						    swagNote.value1 = songNotes[3];
     						    swagNote.value2 = songNotes[4];
     						    
     						    unspawnNotes.push(swagNote);
-    						}
     					}
 						// oh and set the note's must hit section
 						swagNote.mustPress = gottaHitNote;
