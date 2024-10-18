@@ -442,6 +442,7 @@ class PlayState extends MusicBeatState
 		 */
 
 		scriptHandler.callFunction('onCreatePost');
+		stageBuild.scriptHandler.callFunction('post');
 	}
 
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey>

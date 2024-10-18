@@ -523,6 +523,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					trainStart();
 				}
 		}
+		scriptHandler.callFunction('update', [curBeat, boyfriend, gf, dadOpponent]);
 	}
 
 	public function stageUpdateConstant(elapsed:Float, boyfriend:Boyfriend, gf:Character, dadOpponent:Character)
@@ -541,6 +542,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					}
 				}
 		}
+		scriptHandler.callFunction('updateConstant', [elapsed, boyfriend, gf, dadOpponent]);
 	}
 
 	// PHILLY STUFFS!
