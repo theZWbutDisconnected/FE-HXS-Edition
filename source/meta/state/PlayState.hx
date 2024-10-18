@@ -1018,7 +1018,7 @@ class PlayState extends MusicBeatState
 	
 	function noteEventTrigger(name:String, v1:String, v2:String) {
 	    scriptHandler.callFunction('onEvent', [name, v1, v2]);
-	    stageBuilder.scriptHandler.callFunction('onEvent', [name, v1, v2]);
+	    stageBuild.scriptHandler.callFunction('onEvent', [name, v1, v2]);
 	}
 
 	function goodNoteHit(coolNote:Note, characters:Array<Character>, characterStrums:Strumline, ?canDisplayJudgement:Bool = true)
