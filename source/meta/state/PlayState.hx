@@ -146,8 +146,8 @@ class PlayState extends MusicBeatState
 	public static var determinedChartType:String = "";
 
 	// strumlines
-	private var dadStrums:Strumline;
-	private var boyfriendStrums:Strumline;
+	public var dadStrums:Strumline;
+	public var boyfriendStrums:Strumline;
 
 	public static var playerLane:Int = 1;
 
